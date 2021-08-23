@@ -1,0 +1,158 @@
+;=======================================================
+; 8032 hardware vectors
+;=======================================================
+   .org 00h               	; power up and reset vector
+   ljmp start
+   .org 03h               	; interrupt 0 vector
+   ljmp start
+   .org 0bh               	; timer 0 interrupt vector
+   clr p1.1
+   ljmp scan
+   .org 13h               	; interrupt 1 vector
+   ljmp start
+   .org 1bh               	; timer 1 interrupt vector
+   ljmp start
+   .org 23h               	; serial port interrupt vector
+   ljmp start
+   .org 2bh               	; 8052 extra interrupt vector
+   
+;=======================================================
+; begin main program
+;=======================================================
+start:
+	;lcall init8255			; initialize 8255
+	;lcall timer1			; initialize timer 1 to scan control pad
+	lcall timer0
+	mov p1, #0FEh
+	lcall init
+main:
+	sjmp main				; loop
+
+  
+ 
+;=======================================================
+; subroutine init8255
+; this routine initializes the 8255 hardware
+;=======================================================
+init8255:
+	mov dptr, #0FE13h 		; point dptr at 8255 control register
+	mov a, #98h				; set port B and low nib of port C to output
+	movx @dptr, a
+	ret
+	
+;=================================================================
+; subroutine init
+; this routine initializes the hardware
+; set up serial port with a 11.0592 MHz crystal,
+; use timer 1 for 9600 baud serial communications
+;=================================================================
+init:
+   mov   tmod, #20h       ; set timer 1 for auto reload - mode 2
+   mov   tcon, #41h       ; run counter 1 and set edge trig ints
+   mov   th1,  #0fdh      ; set 9600 baud with xtal=11.059mhz
+   mov   scon, #50h       ; set serial control reg for 8 bit data
+                          ; and mode 1
+   ret
+   
+;=======================================================
+; subroutine timer0
+; this routine initializes timer 0 to generate an
+; interrupt every 256 - TH0 machine cycles
+;=======================================================
+timer0:
+	mov TH0, #00h			; set the reload byte
+	mov a, TMOD				; put timer 0 int 8-bit auto-reload mode
+	orl a, #02h
+	mov TMOD, a
+	mov a, IE				; enable the timer 0 overflow interrupt
+	orl a, #82h
+	mov IE, a
+	mov a, TCON				; run timer 0
+	orl a, #10h
+	mov TCON, a			
+	ret
+
+;=======================================================
+; subroutine timer1
+; this routine initializes timer 1 to scan the motor
+; arm control pad
+;=======================================================
+timer1:
+	mov TH1, #00h			; set the reload byte
+	mov a, TMOD				; put timer 1 int 8-bit auto-reload mode
+	orl a, #20h
+	mov TMOD, a
+	mov a, IE				; enable the timer 0 overflow interrupt
+	orl a, #88h
+	mov IE, a
+	mov a, TCON				; run timer 0
+	orl a, #40h
+	mov TCON, a			
+	ret
+
+;=======================================================
+; ISR scan
+; this ISR scans the arm controler and sets port B/C to
+; the specified value
+;=======================================================
+scan:
+	djnz r0, scanend		; decrement inner loop
+	mov r0, #24h 			; reset r0 to 36
+	djnz r1, scanend 		; decrement outer loop
+	mov r1, #64h			; reset r1 to 100
+	mov a, p1
+	lcall prthex
+scanend:
+	reti
+
+;*****************************************************************
+; general purpose routines
+;*****************************************************************
+;===============================================================
+; subroutine sndchr
+; this routine takes the chr in the acc and sends it out the
+; serial port.
+;===============================================================
+sndchr:
+   clr  scon.1            ; clear the tx  buffer full flag.
+   mov  sbuf,a            ; put chr in sbuf
+txloop:
+   jnb  scon.1, txloop    ; wait till chr is sent
+   ret
+   
+;===============================================================
+; subroutine prthex
+; this routine takes the contents of the acc and prints it out
+; as a 2 digit ascii hex number.
+;===============================================================
+prthex:
+   push acc
+   lcall binasc           ; convert acc to ascii
+   lcall sndchr           ; print first ascii hex digit
+   mov   a,  r2           ; get second ascii hex digit
+   lcall sndchr           ; print it
+   pop acc
+   ret
+;===============================================================
+; subroutine binasc
+; binasc takes the contents of the accumulator and converts it
+; into two ascii hex numbers.  the result is returned in the
+; accumulator and r2.
+;===============================================================
+binasc:
+   mov   r2, a            ; save in r2
+   anl   a,  #0fh         ; convert least sig digit.
+   add   a,  #0f6h        ; adjust it
+   jnc   noadj1           ; if a-f then readjust
+   add   a,  #07h
+noadj1:
+   add   a,  #3ah         ; make ascii
+   xch   a,  r2           ; put result in reg 2
+   swap  a                ; convert most sig digit
+   anl   a,  #0fh         ; look at least sig half of acc
+   add   a,  #0f6h        ; adjust it
+   jnc   noadj2           ; if a-f then re-adjust
+   add   a,  #07h
+noadj2:
+   add   a,  #3ah         ; make ascii
+   ret

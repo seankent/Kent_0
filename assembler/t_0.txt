@@ -1,0 +1,9 @@
+ADD r2, r0,r1 // first comment
+L1:
+
+ADD r2, r1, r0 //second comment
+LOAD r2, 0x0023// third comment
+L2: LOAD r2, 0x0023		//    forth comment
+LOAD r2, r0
+store r0, r1
+JUMP r0, L1
