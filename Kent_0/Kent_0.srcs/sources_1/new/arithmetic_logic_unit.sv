@@ -21,7 +21,7 @@ module arithmetic_logic_unit
     assign eq = (data_0 == data_1);
     assign ne = ~eq;
     assign lt = data_0 < data_1;
-    assign le = lt & eq;
+    assign le = lt | eq;
     
     //==============================
     // always_comb
@@ -35,7 +35,7 @@ module arithmetic_logic_unit
             3'h4: data_2 = data_0 ^ data_1;
             3'h5: data_2 = data_0 << data_1;
             3'h6: data_2 = data_0 >> data_1;
-            3'h7: data_2 = 8'h0;
+            3'h7: data_2 = 8'h00;
         endcase
     end
     

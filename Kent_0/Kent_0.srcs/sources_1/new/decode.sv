@@ -58,7 +58,7 @@ module decode
     assign addr_1 = ir[7:5];
     assign addr_2 = ir[4:2];
     assign func = ir[13:11];
-    assign imm = (op == F2) ? {ir[4], ir[4], ir[4], ir[15:11]} : ir[15:8];
+    assign imm = (op == F3) ? {ir[4], ir[4], ir[4], ir[15:11]} : ir[15:8];
     
     //==============================
     // always_comb
@@ -105,7 +105,7 @@ module decode
                 begin
                     we = 1'b0;
                     data_2_sel = DATA_2_SEL__ALU;
-                    case (op_ext_1[2:1])
+                    case (op_ext_1[1:0])
                         2'h0: ctrl_flow_type = CTRL_FLOW_TYPE__BEQ;
                         2'h1: ctrl_flow_type = CTRL_FLOW_TYPE__BNE;
                         2'h2: ctrl_flow_type = CTRL_FLOW_TYPE__BLT;

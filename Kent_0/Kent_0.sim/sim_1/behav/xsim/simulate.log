@@ -2,23 +2,23 @@ Vivado Simulator 2019.2
 Time resolution is 1 ps
 Loading ROM.
 pc: 00
-ir: ff01
+ir: 0205
 pc: 01
-ir: ff05
+ir: 0028
 pc: 02
-ir: ff09
-pc: 03
-ir: ff0d
+ir: 102f
 pc: 04
-ir: 003d
+ir: 0061
+pc: 00
+ir: 0205
+pc: 01
+ir: 0028
+pc: 02
+ir: 102f
 pc: 04
-ir: 003d
-pc: 04
-ir: 003d
-pc: 04
-ir: 003d
-pc: 04
-ir: 003d
-pc: 04
-ir: 003d
-$finish called at time : 110 ns : File "C:/Users/seanj/Documents/New folder/Kent_0/Kent_0.srcs/sim_1/new/central_processing_unit_tb.sv" Line 79
+ir: 0061
+pc: 00
+ir: 0205
+pc: 01
+ir: 0028
+$finish called at time : 110 ns : File "C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sim_1/new/central_processing_unit_tb.sv" Line 79

@@ -28,7 +28,7 @@ def instr__load_mem(r_0, r_2):
 def instr__add(r_0, r_1, r_2):
 	return (((FUNC__ADD & 0x7) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__FUNC & 0x3)) & 0x3fff
 
-def instr__add(r_0, r_1, r_2):
+def instr__sub(r_0, r_1, r_2):
 	return (((FUNC__SUB & 0x7) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__FUNC & 0x3)) & 0x3fff
 
 def instr__jump_relative(r_2, imm):
@@ -76,10 +76,9 @@ hex_file = open('a.txt', 'w')
 #regs = set(['r' + str(i) for i in range(8)])
 regs = {'r0': 0x0, 'r1': 0x1, 'r2': 0x2, 'r3': 0x3, 'r4': 0x4, 'r5': 0x5, 'r6': 0x6, 'r7': 0x7}
 regs = set(['r' + str(i) for i in range(8)])
-print(['r' + str(i) for i in range(8)])
-print(regs)
+
 #instr = set(['add', 'sub', 'load', 'store'])
-instr_len = {'add': 4, 'sub': 4, 'load': 3, 'store': 3, 'jump': 3, 'branch': 4}
+instr_len = {'add': 4, 'sub': 4, 'load': 3, 'store': 3, 'jump': 3, 'beq': 4, 'bne': 4, 'blt': 4,'ble': 4}
 
 labels = {}
 
@@ -124,6 +123,8 @@ for line in file:
 
 for instr, instr_number in instr_list:
 	op = instr[0]
+	print(instr)
+
 	if op not in instr_len:
 		continue
 	if len(instr) != instr_len[op]:
@@ -185,6 +186,10 @@ for instr, instr_number in instr_list:
 		r_0 = token_to_reg(instr[1])
 		r_1 = token_to_reg(instr[2])
 		imm = token_to_imm(instr[3])
+		if (imm == None):
+			if instr[3] in labels:
+				offset = labels[instr[3]] - instr_number
+				imm = offset & 0xff
 		if (r_0 == None) or (r_1 == None) or (imm == None):
 			continue
 		binary = instr__beq(r_0, r_1, imm)
@@ -193,8 +198,8 @@ for instr, instr_number in instr_list:
 		r_1 = token_to_reg(instr[2])
 		imm = token_to_imm(instr[3])
 		if (imm == None):
-			if instr[2] in labels:
-				offset = labels[instr[2]] - instr_number
+			if instr[3] in labels:
+				offset = labels[instr[3]] - instr_number
 				imm = offset & 0xff
 		if (r_0 == None) or (r_1 == None) or (imm == None):
 			continue
@@ -204,8 +209,8 @@ for instr, instr_number in instr_list:
 		r_1 = token_to_reg(instr[2])
 		imm = token_to_imm(instr[3])
 		if (imm == None):
-			if instr[2] in labels:
-				offset = labels[instr[2]] - instr_number
+			if instr[3] in labels:
+				offset = labels[instr[3]] - instr_number
 				imm = offset & 0xff
 		if (r_0 == None) or (r_1 == None) or (imm == None):
 			continue
@@ -215,8 +220,8 @@ for instr, instr_number in instr_list:
 		r_1 = token_to_reg(instr[2])
 		imm = token_to_imm(instr[3])
 		if (imm == None):
-			if instr[2] in labels:
-				offset = labels[instr[2]] - instr_number
+			if instr[3] in labels:
+				offset = labels[instr[3]] - instr_number
 				imm = offset & 0xff
 		if (r_0 == None) or (r_1 == None) or (imm == None):
 			continue
@@ -255,13 +260,10 @@ for instr, instr_number in instr_list:
 
 
 
-print(line_number)	
-print(instr_number)
 
 word = 'L:'
-print(bool(re.match('^[A-z].*:', word)))
-print(labels)
-print(instr_list)
+# print(bool(re.match('^[A-z].*:', word)))
+
 
 	# remove any comments
 	# for i in range(len(line)):
@@ -269,7 +271,6 @@ print(instr_list)
 
 	#print(line)
 
-print(re.sub(r'a', 'b', 'banana'))
 
 
 
@@ -311,7 +312,6 @@ def token_to_imm(token):
 
 
 imm = token_to_imm('-3')
-print(imm)
 
 instr = ['load', 'r7', '0x00']
 imm = 0xff
@@ -339,13 +339,13 @@ r_1 = 0x7
 r_0 = 0x7
 
 binary = instr__store(r_0, r_1)
-print('{:016b}'.format(binary))
+# print('{:016b}'.format(binary))
 
 r_1 = 0x7
 r_0 = 0x7
 imm = 0x31
 binary = instr__beq(r_0, r_1, imm)
-print('{:016b}'.format(binary))
+# print('{:016b}'.format(binary))
 
 # print(int('0x00'))
 
@@ -376,8 +376,8 @@ class Assembler:
 		self.FUNC__SUB = 0x1
 
 
-		print(self.registers)
-		print(self.instruction_set)
+		# print(self.registers)
+		# print(self.instruction_set)
 
 	def Run(input_file, output_file = 'a.txt'):
 		# file = open('t_0.txt')

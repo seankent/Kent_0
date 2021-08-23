@@ -59,7 +59,7 @@ module central_processing_unit_tb;
     //==============================
     initial begin
         $display("Loading ROM.");
-        $readmemb("C:/Users/seanj/Documents/test/t_0.txt", ROM);
+        $readmemb("C:/Users/seanj/Documents/Kent_0/assembler/a.txt", ROM);
         
         clk = 1'b1;
         rst = 1'b1;
