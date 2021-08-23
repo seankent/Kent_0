@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../Kent_0.srcs/sources_1/new/binary_to_seven_segment.sv" \
+"../../../../Kent_0.srcs/sources_1/new/seven_segment_display.sv" \
+"../../../../Kent_0.srcs/sim_1/new/seven_segment_display_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
