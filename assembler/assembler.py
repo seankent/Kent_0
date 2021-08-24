@@ -71,6 +71,9 @@ def token_to_imm(token):
 
 file = open('t_0.txt')
 hex_file = open('a.txt', 'w')
+coe = open('t_0.coe', 'w')
+coe.write('memory_initialization_radix=2;\n')
+coe.write('memory_initialization_vector=\n')
 
 
 #regs = set(['r' + str(i) for i in range(8)])
@@ -121,7 +124,8 @@ for line in file:
 
 	line_number += 1
 
-for instr, instr_number in instr_list:
+for i in range(len(instr_list)):
+	instr, instr_number = instr_list[i]
 	op = instr[0]
 	print(instr)
 
@@ -228,6 +232,10 @@ for instr, instr_number in instr_list:
 		binary = instr__ble(r_0, r_1, imm)
 
 	hex_file.write('{:016b}\n'.format(binary))
+	if i == len(instr_list) - 1:
+		coe.write('{:016b};\n'.format(binary))
+	else:
+		coe.write('{:016b},\n'.format(binary))
 
 	# if op == 'add':
 	# 	if (instr[1] not in regs) or (instr[1] not in regs) or (instr[1] not in regs):

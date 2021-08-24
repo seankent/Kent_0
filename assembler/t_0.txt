@@ -1,6 +1,5 @@
 load r1, 0x2
-store r0, r1
+load r2, 0x3
+load r3, 0x4
 l0:
 jump r0, l0
-
-

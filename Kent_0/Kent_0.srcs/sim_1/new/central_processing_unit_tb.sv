@@ -26,15 +26,25 @@ module central_processing_unit_tb;
     );
     
     //==============================
-    // random_access_memory_0
+    // data_memory_0
     //==============================
-    random_access_memory random_access_memory_0
+    data_memory data_memory_0
     (
         .clka(clk),
         .wea(wea),
         .addra(addra),
         .dina(dina),
         .douta(douta)
+    );
+    
+    //==============================
+    // program_memory
+    //==============================
+    program_memory program_memory_0
+    (
+        .clka(clk),
+        .addra(pc),
+        .douta(ir_temp)
     );
     
     //==============================
@@ -53,6 +63,8 @@ module central_processing_unit_tb;
     logic [7:0] data_1;
     logic [7:0] data_memory_data_2;
     logic data_memory_we;
+    
+    logic [15:0] ir_temp;
     
     
     logic wea;

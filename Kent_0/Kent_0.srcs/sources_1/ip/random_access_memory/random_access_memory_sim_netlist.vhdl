@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
 -- Date        : Mon Aug 23 20:54:30 2021
 -- Host        : DESKTOP-18I9AUK running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/random_access_memory/random_access_memory_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top random_access_memory -prefix
+--               random_access_memory_ random_access_memory_sim_netlist.vhdl
 -- Design      : random_access_memory
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -22,8 +22,6 @@ entity random_access_memory_blk_mem_gen_prim_wrapper is
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of random_access_memory_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end random_access_memory_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of random_access_memory_blk_mem_gen_prim_wrapper is
@@ -238,8 +236,6 @@ entity random_access_memory_blk_mem_gen_prim_width is
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of random_access_memory_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end random_access_memory_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of random_access_memory_blk_mem_gen_prim_width is
@@ -265,8 +261,6 @@ entity random_access_memory_blk_mem_gen_generic_cstr is
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of random_access_memory_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end random_access_memory_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of random_access_memory_blk_mem_gen_generic_cstr is
@@ -292,8 +286,6 @@ entity random_access_memory_blk_mem_gen_top is
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of random_access_memory_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end random_access_memory_blk_mem_gen_top;
 
 architecture STRUCTURE of random_access_memory_blk_mem_gen_top is
@@ -319,8 +311,6 @@ entity random_access_memory_blk_mem_gen_v8_4_4_synth is
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of random_access_memory_blk_mem_gen_v8_4_4_synth : entity is "blk_mem_gen_v8_4_4_synth";
 end random_access_memory_blk_mem_gen_v8_4_4_synth;
 
 architecture STRUCTURE of random_access_memory_blk_mem_gen_v8_4_4_synth is
@@ -554,8 +544,6 @@ entity random_access_memory_blk_mem_gen_v8_4_4 is
   attribute C_WRITE_WIDTH_B of random_access_memory_blk_mem_gen_v8_4_4 : entity is 8;
   attribute C_XDEVICEFAMILY : string;
   attribute C_XDEVICEFAMILY of random_access_memory_blk_mem_gen_v8_4_4 : entity is "artix7";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of random_access_memory_blk_mem_gen_v8_4_4 : entity is "blk_mem_gen_v8_4_4";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of random_access_memory_blk_mem_gen_v8_4_4 : entity is "yes";
 end random_access_memory_blk_mem_gen_v8_4_4;

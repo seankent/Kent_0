@@ -25,7 +25,7 @@ module random_access_memory_tb;
     //==============================
     // dut
     //==============================
-    random_access_memory random_access_memory_0
+    data_memory dut
     (
         .clka(clk),
         .wea(wea),

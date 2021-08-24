@@ -3,8 +3,11 @@
 Nov  6 2019
 21:57:16
 C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.sim/sim_1/behav/xsim/glbl.v,1629765793,verilog,,,,glbl,,,,,,,,
-C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sim_1/new/central_processing_unit_tb.sv,1629772020,systemVerilog,,,,central_processing_unit_tb,,,,,,,,
-C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/random_access_memory/sim/random_access_memory.v,1629766419,verilog,,,,random_access_memory,,,,,,,,
+C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sim_1/new/central_processing_unit_tb.sv,1629842191,systemVerilog,,,,central_processing_unit_tb,,,,,,,,
+C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sim_1/new/random_access_memory_tb.sv,1629840928,systemVerilog,,,,random_access_memory_tb,,,,,,,,
+C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/data_memory/sim/data_memory.v,1629840990,verilog,,,,data_memory,,,,,,,,
+C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/program_memory/sim/program_memory.v,1629841919,verilog,,C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/data_memory/sim/data_memory.v,,program_memory,,,,,,,,
+C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/random_access_memory/sim/random_access_memory.v,1629838839,verilog,,,,random_access_memory,,,,,,,,
 C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/arithmetic_logic_unit.sv,1629765793,systemVerilog,,C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv,,arithmetic_logic_unit,,,,,,,,
 C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv,1629771076,systemVerilog,,C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv,,central_processing_unit,,,,,,,,
 C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv,1629771219,systemVerilog,,C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/mux_4_to_1.sv,,decode,,,,,,,,

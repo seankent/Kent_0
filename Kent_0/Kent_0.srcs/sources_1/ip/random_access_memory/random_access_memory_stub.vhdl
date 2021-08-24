@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
 -- Date        : Mon Aug 23 20:54:30 2021
 -- Host        : DESKTOP-18I9AUK running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/random_access_memory/random_access_memory_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top random_access_memory -prefix
+--               random_access_memory_ random_access_memory_stub.vhdl
 -- Design      : random_access_memory
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1
