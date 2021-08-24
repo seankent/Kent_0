@@ -1,6 +1,6 @@
 load r1, 0x2
-add r2, r0, r1
-ble r0, r1, l0
-add r3, r2, r1
+store r0, r1
 l0:
-jump r0, r0
+jump r0, l0
+
+

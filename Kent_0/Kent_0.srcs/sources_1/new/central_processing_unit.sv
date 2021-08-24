@@ -7,6 +7,10 @@ module central_processing_unit
     input logic rst,
     input logic [15:0] ir,
     output pc,
+    output [7:0] data_0,
+    output [7:0] data_1,
+    input logic [7:0] data_memory_data_2,
+    output data_memory_we, 
     
     output [7:0] r_0,
     output [7:0] r_1,
@@ -35,6 +39,7 @@ module central_processing_unit
     logic [2:0] ctrl_flow_type;
     logic [1:0] data_2_sel;
     logic eq, ne, lt, le;
+    logic data_memory_we;
     
     //==============================
     // debug logic
@@ -76,7 +81,8 @@ module central_processing_unit
         .imm(imm),
         .we(we),
         .ctrl_flow_type(ctrl_flow_type),
-        .data_2_sel(data_2_sel)
+        .data_2_sel(data_2_sel),
+        .data_memory_we(data_memory_we)
     );
     
     //==============================
@@ -89,7 +95,7 @@ module central_processing_unit
         .sel(data_2_sel),
         .in_0(arithmetic_logic_unit_0_data_2),
         .in_1(imm),
-        .in_2(8'h00),   // data from memory (need to add)
+        .in_2(data_memory_data_2),
         .in_3(pc_plus_one),
         .out(data_2)
     );

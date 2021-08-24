@@ -165,9 +165,9 @@ for instr, instr_number in instr_list:
 	elif op == 'store':
 		r_0 = token_to_reg(instr[1])
 		r_1 = token_to_reg(instr[2])
-		if (r_0 == None) or (r_2 == None):
+		if (r_0 == None) or (r_1 == None):
 			continue
-		binary = instr__stroe(r_0, r_1)
+		binary = instr__store(r_0, r_1)
 	elif op == 'jump':
 		r_0 = token_to_reg(instr[2])
 		r_2 = token_to_reg(instr[1])

@@ -17,8 +17,24 @@ module central_processing_unit_tb;
         .rst(rst),
         .ir(ir),
         .pc(pc),
+        .data_0(data_0),
+        .data_1(data_1),
+        .data_memory_data_2(data_memory_data_2),
+        .data_memory_we(data_memory_we),
         
         .r_0(r_0), .r_1(r_1), .r_2(r_2), .r_3(r_3), .r_4(r_4), .r_5(r_5), .r_6(r_6), .r_7(r_7)
+    );
+    
+    //==============================
+    // random_access_memory_0
+    //==============================
+    random_access_memory random_access_memory_0
+    (
+        .clka(clk),
+        .wea(wea),
+        .addra(addra),
+        .dina(dina),
+        .douta(douta)
     );
     
     //==============================
@@ -33,8 +49,18 @@ module central_processing_unit_tb;
     logic rst;
     logic [15:0] ir;
     logic [7:0] pc;
-    logic [15:0] ROM [255:0];
+    logic [7:0] data_0;
+    logic [7:0] data_1;
+    logic [7:0] data_memory_data_2;
+    logic data_memory_we;
     
+    
+    logic wea;
+    logic [7:0] addra;
+    logic [7:0] dina;
+    logic [7:0] douta;
+    
+    logic [15:0] ROM [255:0];
     int n;
     
     //==============================
@@ -44,6 +70,14 @@ module central_processing_unit_tb;
     
     //==============================
     // assign
+    //==============================
+    assign addra = data_1;
+    assign dina = data_0;
+    assign data_memory_data_2 = douta;
+    assign wea = data_memory_we;
+    
+    //==============================
+    // ROM read
     //==============================
     assign ir = ROM[pc];
     

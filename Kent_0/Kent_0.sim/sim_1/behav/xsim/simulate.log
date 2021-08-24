@@ -1,24 +1,25 @@
 Vivado Simulator 2019.2
 Time resolution is 1 ps
+Block Memory Generator module central_processing_unit_tb.random_access_memory_0.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Loading ROM.
 pc: 00
 ir: 0205
 pc: 01
-ir: 0028
+ir: 0102
 pc: 02
-ir: 102f
-pc: 04
-ir: 0061
-pc: 00
-ir: 0205
-pc: 01
-ir: 0028
+ir: 0021
 pc: 02
-ir: 102f
-pc: 04
-ir: 0061
-pc: 00
-ir: 0205
-pc: 01
-ir: 0028
-$finish called at time : 110 ns : File "C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sim_1/new/central_processing_unit_tb.sv" Line 79
+ir: 0021
+pc: 02
+ir: 0021
+pc: 02
+ir: 0021
+pc: 02
+ir: 0021
+pc: 02
+ir: 0021
+pc: 02
+ir: 0021
+pc: 02
+ir: 0021
+$finish called at time : 110 ns : File "C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sim_1/new/central_processing_unit_tb.sv" Line 113
