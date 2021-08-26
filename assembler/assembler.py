@@ -387,10 +387,23 @@ class Assembler:
 		# print(self.registers)
 		# print(self.instruction_set)
 
-	def Run(input_file, output_file = 'a.txt'):
-		# file = open('t_0.txt')
+	def Run(self):
+		file = open('t_0.txt').read()
+		print('=================================')
+		print(file)
+		print('=================================')
+		file = self.Preprocess(file)
+		print(file)
+		print('=================================')
 		# file = open('a.txt', 'w')
 		pass
+
+	def Preprocess(self, file):
+		file = file.lower()
+		file = re.sub('//.*', '', file)
+		file = re.sub('\t+', ' ', file)
+		file = re.sub(' +', ' ', file)
+		return file
 
 	def instr__load_imm(r_2, imm):
 		return (((imm & 0xff) << 8) | ((self.OP_EXT_0__LOAD_IMM & 0x7)<< 5) | ((r_2 & 0x7) << 2) | (self.OP__LOAD & 0x3)) & 0xffff
@@ -427,6 +440,7 @@ class Assembler:
 
 
 assembler = Assembler()
+assembler.Run()
 
 
 
