@@ -20,10 +20,10 @@ FUNC__ADD = 0x0
 FUNC__SUB = 0x1
 
 def instr__load_imm(r_2, imm):
-	return (((imm & 0xff) << 8) | ((OP_EXT_0__LOAD_IMM & 0x7)<< 5) | ((r_2 & 0x7) << 2) | (OP__LOAD & 0x3)) & 0xffff
+	return (((imm & 0xff) << 8) | ((OP_EXT_0__LOAD_IMM & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__LOAD & 0x3)) & 0xffff
 
 def instr__load_mem(r_0, r_2):
-	return (((r_0 & 0x7) << 8) | ((OP_EXT_0__LOAD_IMM & 0x7)<< 5) | ((r_2 & 0x7) << 2) | (OP__LOAD & 0x3)) & 0x07ff
+	return (((r_0 & 0x7) << 8) | ((OP_EXT_0__LOAD_MEM & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__LOAD & 0x3)) & 0x07ff
 
 def instr__add(r_0, r_1, r_2):
 	return (((FUNC__ADD & 0x7) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__FUNC & 0x3)) & 0x3fff
@@ -56,7 +56,7 @@ def instr__ble(r_0, r_1, imm):
 def token_to_imm(token):
 	#print(bool(re.match('^[0-9]+$', token)))
 	# check if token is a decimal number
-	if bool(re.match('^-*[0-9]+$', token)):
+	if bool(re.match('^-?[0-9]+$', token)):
 		imm = int(token) & 0xff
 		return imm 
 	# check if token is a hex or binary number
@@ -167,8 +167,8 @@ for i in range(len(instr_list)):
 		else:
 			binary = instr__load_mem(r_0, r_2)
 	elif op == 'store':
-		r_0 = token_to_reg(instr[1])
-		r_1 = token_to_reg(instr[2])
+		r_0 = token_to_reg(instr[2])
+		r_1 = token_to_reg(instr[1])
 		if (r_0 == None) or (r_1 == None):
 			continue
 		binary = instr__store(r_0, r_1)

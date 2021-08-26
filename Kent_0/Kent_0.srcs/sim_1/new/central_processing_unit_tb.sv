@@ -13,7 +13,7 @@ module central_processing_unit_tb;
     //==============================
     central_processing_unit central_processing_unit_0
     (
-        .clk(clk),
+        .clk(central_processing_unit_clk),
         .rst(rst),
         .ir(ir),
         .pc(pc),
@@ -44,13 +44,13 @@ module central_processing_unit_tb;
     (
         .clka(clk),
         .addra(pc),
-        .douta(ir_temp)
+        .douta(ir)
     );
     
     //==============================
     // parameter
     //==============================
-    parameter N = 10;
+    parameter N = 100;
     
     //==============================
     // logic
@@ -64,7 +64,7 @@ module central_processing_unit_tb;
     logic [7:0] data_memory_data_2;
     logic data_memory_we;
     
-    logic [15:0] ir_temp;
+    //logic [15:0] ir_temp;
     
     
     logic wea;
@@ -83,21 +83,30 @@ module central_processing_unit_tb;
     //==============================
     // assign
     //==============================
-    assign addra = data_1;
-    assign dina = data_0;
+    assign addra = data_0;
+    assign dina = data_1;
     assign data_memory_data_2 = douta;
-    assign wea = data_memory_we;
+    assign wea = data_memory_we & state[5];
     
     //==============================
     // ROM read
     //==============================
-    assign ir = ROM[pc];
+    //assign ir = ROM[pc];
     
     //==============================
     // clock
     //==============================
+    logic central_processing_unit_clk;
+    logic [5:0] state = 6'h20;
+    
+    assign central_processing_unit_clk = state[0];
+    //assign program_memory_clk = (state[1] | state[2]) & clk;
     always begin
         #5 clk = !clk;
+    end
+    
+    always_ff @(posedge clk) begin
+        state <= {state[4:0], state[5]};
     end
     
     //==============================
@@ -110,11 +119,11 @@ module central_processing_unit_tb;
         clk = 1'b1;
         rst = 1'b1;
         
-        #5;
+        #10;
         
         rst = 1'b0;
         
-        #5;
+        #9;
         
         for (n = 0; n < N; n++) begin
             $display("pc: %h", pc);
