@@ -1,7 +1,2 @@
-LOAD     r1, 0x1//first 
-load r2, 			0xaa ///
-store r2, r1 // seconds
-load r3, 0x1
-load r4, r3
-l0:
-jump r0, l0
+loop:
+jump r0, loop

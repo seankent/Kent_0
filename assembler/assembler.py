@@ -3,369 +3,32 @@
 ##########
 import re
 
-OP__FUNC = 0x0
-OP__LOAD = 0x1
-OP__JUMP = 0x1
-OP__STORE = 0x2
-OP__BRANCH = 0x3
-OP_EXT_0__LOAD_IMM = 0x0
-OP_EXT_0__LOAD_MEM = 0x2
-OP_EXT_0__JUMP_RELATIVE = 0x1
-OP_EXT_0__JUMP_INDIRECT = 0x3
-OP_EXT_1__BEQ = 0x0
-OP_EXT_1__BNE = 0x1
-OP_EXT_1__BLT = 0x2
-OP_EXT_1__BLE = 0x3
-FUNC__ADD = 0x0
-FUNC__SUB = 0x1
-
-def instr__load_imm(r_2, imm):
-	return (((imm & 0xff) << 8) | ((OP_EXT_0__LOAD_IMM & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__LOAD & 0x3)) & 0xffff
-
-def instr__load_mem(r_0, r_2):
-	return (((r_0 & 0x7) << 8) | ((OP_EXT_0__LOAD_MEM & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__LOAD & 0x3)) & 0x07ff
-
-def instr__add(r_0, r_1, r_2):
-	return (((FUNC__ADD & 0x7) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__FUNC & 0x3)) & 0x3fff
-
-def instr__sub(r_0, r_1, r_2):
-	return (((FUNC__SUB & 0x7) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__FUNC & 0x3)) & 0x3fff
-
-def instr__jump_relative(r_2, imm):
-	return (((imm & 0xff) << 8) | ((OP_EXT_0__JUMP_RELATIVE & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__JUMP & 0x3)) & 0xffff
-
-def instr__jump_indirect(r_0, r_2):
-	return (((r_0 & 0x7) << 8) | ((OP_EXT_0__JUMP_INDIRECT & 0x7) << 5) | ((r_2 & 0x7) << 2) | (OP__JUMP & 0x3)) & 0x07ff
-
-def instr__store(r_0, r_1):
-	return (((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (OP__STORE & 0x3)) & 0x07fe3
-
-def instr__beq(r_0, r_1, imm):
-	return (((imm & 0x1f) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((OP_EXT_1__BEQ & 0x3) << 2) | (OP__BRANCH & 0x3)) & 0xffff
-
-def instr__bne(r_0, r_1, imm):
-	return (((imm & 0x1f) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((OP_EXT_1__BNE & 0x3) << 2) | (OP__BRANCH & 0x3)) & 0xffff
-
-def instr__blt(r_0, r_1, imm):
-	return (((imm & 0x1f) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((OP_EXT_1__BLT & 0x3) << 2) | (OP__BRANCH & 0x3)) & 0xffff
-
-def instr__ble(r_0, r_1, imm):
-	return (((imm & 0x1f) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((OP_EXT_1__BLE & 0x3) << 2) | (OP__BRANCH & 0x3)) & 0xffff
-
-
-def token_to_imm(token):
-	#print(bool(re.match('^[0-9]+$', token)))
-	# check if token is a decimal number
-	if bool(re.match('^-?[0-9]+$', token)):
-		imm = int(token) & 0xff
-		return imm 
-	# check if token is a hex or binary number
-	elif len(token) > 2:
-		if token[0:2] == '0x' and bool(re.match('^[0-9a-f]+$', token[2:])):
-			imm = int(token, base = 16) & 0xff
-			return imm
-		if token[0:2] == '0b' and bool(re.match('^[0-1]+$', token[2:])):
-			imm = int(token, base = 2) & 0xff
-			return imm
-	return None
-
-file = open('t_0.txt')
-hex_file = open('a.txt', 'w')
-coe = open('t_0.coe', 'w')
-coe.write('memory_initialization_radix=2;\n')
-coe.write('memory_initialization_vector=\n')
-
-
-#regs = set(['r' + str(i) for i in range(8)])
-regs = {'r0': 0x0, 'r1': 0x1, 'r2': 0x2, 'r3': 0x3, 'r4': 0x4, 'r5': 0x5, 'r6': 0x6, 'r7': 0x7}
-regs = set(['r' + str(i) for i in range(8)])
-
-#instr = set(['add', 'sub', 'load', 'store'])
-instr_len = {'add': 4, 'sub': 4, 'load': 3, 'store': 3, 'jump': 3, 'beq': 4, 'bne': 4, 'blt': 4,'ble': 4}
-
-labels = {}
-
-
-def token_to_reg(token):
-	if token in regs:
-		return int(token[1:])
-	else:
-		return None
-
-
-instr_list = []
-line_number = 1
-instr_number = 1
-for line in file:
-	#line = "the dog// when"
-	if line[-1] == '\n':
-		line = line[:-1]
-	line = re.sub(r'//', ' // ', line)
-	line = re.sub('\t', '  ', line)
-	if bool(re.match(' ', line)):
-		continue
-	if line == '':
-		continue
-	#print(line)
-	tokens = re.split(', *|\s *', line.lower())
-	instr = []
-	for i in range(len(tokens)):
-		token = tokens[i]
-		if i == 0 and bool(re.match('^[A-z].*:', token)):
-			labels[token[0:-1]] = instr_number
-		elif token == '//':
-			break
-		else:
-			instr.append(token)
-	
-	if instr != []:
-		instr_list.append((instr, instr_number))
-		instr_number += 1
-
-	line_number += 1
-
-for i in range(len(instr_list)):
-	instr, instr_number = instr_list[i]
-	op = instr[0]
-	print(instr)
-
-	if op not in instr_len:
-		continue
-	if len(instr) != instr_len[op]:
-		continue
-
-	r_0 = None
-	r_1 = None
-	r_2 = None
-	imm = None
-
-	#print('r_0: {}, r_1: {}, r_2: {}, imm: {}'.format(r_0, r_1, r_2, imm))
-
-	binary = None
-	if op == 'add':
-		r_0 = token_to_reg(instr[2])
-		r_1 = token_to_reg(instr[3])
-		r_2 = token_to_reg(instr[1])
-		if (r_0 == None) or (r_1 == None) or (r_2 == None):
-			continue
-		binary = instr__add(r_0, r_1, r_2)
-	elif op == 'sub':
-		r_0 = token_to_reg(instr[2])
-		r_1 = token_to_reg(instr[3])
-		r_2 = token_to_reg(instr[1])
-		if (r_0 == None) or (r_1 == None) or (r_2 == None):
-			continue
-		binary = instr__sub(r_0, r_1, r_2)
-	elif op == 'load':
-		r_0 = token_to_reg(instr[2])
-		r_2 = token_to_reg(instr[1])
-		imm = token_to_imm(instr[2])
-		if (r_2 == None) or ((r_0 == None) and (imm == None)):
-			continue
-		if imm != None:
-			binary = instr__load_imm(r_2, imm)
-		else:
-			binary = instr__load_mem(r_0, r_2)
-	elif op == 'store':
-		r_0 = token_to_reg(instr[2])
-		r_1 = token_to_reg(instr[1])
-		if (r_0 == None) or (r_1 == None):
-			continue
-		binary = instr__store(r_0, r_1)
-	elif op == 'jump':
-		r_0 = token_to_reg(instr[2])
-		r_2 = token_to_reg(instr[1])
-		imm = token_to_imm(instr[2])
-		if (imm == None):
-			if instr[2] in labels:
-				offset = labels[instr[2]] - instr_number
-				imm = offset & 0xff
-		if (r_2 == None) or ((r_0 == None) and (imm == None)):
-			continue
-		if imm != None:
-			binary = instr__jump_relative(r_2, imm)
-		else:
-			binary = instr__jump_indirect(r_0, r_2)
-	elif op == 'beq':
-		r_0 = token_to_reg(instr[1])
-		r_1 = token_to_reg(instr[2])
-		imm = token_to_imm(instr[3])
-		if (imm == None):
-			if instr[3] in labels:
-				offset = labels[instr[3]] - instr_number
-				imm = offset & 0xff
-		if (r_0 == None) or (r_1 == None) or (imm == None):
-			continue
-		binary = instr__beq(r_0, r_1, imm)
-	elif op == 'bne':
-		r_0 = token_to_reg(instr[1])
-		r_1 = token_to_reg(instr[2])
-		imm = token_to_imm(instr[3])
-		if (imm == None):
-			if instr[3] in labels:
-				offset = labels[instr[3]] - instr_number
-				imm = offset & 0xff
-		if (r_0 == None) or (r_1 == None) or (imm == None):
-			continue
-		binary = instr__bne(r_0, r_1, imm)
-	elif op == 'blt':
-		r_0 = token_to_reg(instr[1])
-		r_1 = token_to_reg(instr[2])
-		imm = token_to_imm(instr[3])
-		if (imm == None):
-			if instr[3] in labels:
-				offset = labels[instr[3]] - instr_number
-				imm = offset & 0xff
-		if (r_0 == None) or (r_1 == None) or (imm == None):
-			continue
-		binary = instr__blt(r_0, r_1, imm)
-	elif op == 'ble':
-		r_0 = token_to_reg(instr[1])
-		r_1 = token_to_reg(instr[2])
-		imm = token_to_imm(instr[3])
-		if (imm == None):
-			if instr[3] in labels:
-				offset = labels[instr[3]] - instr_number
-				imm = offset & 0xff
-		if (r_0 == None) or (r_1 == None) or (imm == None):
-			continue
-		binary = instr__ble(r_0, r_1, imm)
-
-	hex_file.write('{:016b}\n'.format(binary))
-	if i == len(instr_list) - 1:
-		coe.write('{:016b};\n'.format(binary))
-	else:
-		coe.write('{:016b},\n'.format(binary))
-
-	# if op == 'add':
-	# 	if (instr[1] not in regs) or (instr[1] not in regs) or (instr[1] not in regs):
-	# 		continue
-	# 	r_0, r_1, r_2 = regs[instr[1]], regs[instr[2]], regs[instr[3]]
-	# 	binary = instr__add(r_0, r_1, r_2)
-
-	# if op == 'load':
-	# 	if (instr[1] not in regs):
-	# 		continue 
-	# 	r_2 = regs[instr[1]]
-	# 	imm = token_to_imm(instr[2])
-	# 	if imm != None:
-	# 		binary instr__load_imm(r_2, imm)
-	# 	elif 
-
-	# if op == 'add':
-	# 	if (instr[1] in regs):
-	# 		r_2 = regs[instr[1]]
-
-
-		# r_2 = regs[instr[1]]
-		# imm = token_to_imm(instr[2])
-		# if imm != None:
-		# 	binary instr__load_imm(r_2, imm)
-		# elif 
-
-	# print(instr)
-	# print('{:016b}'.format(binary))
-
-
-
-
-word = 'L:'
-# print(bool(re.match('^[A-z].*:', word)))
-
-
-	# remove any comments
-	# for i in range(len(line)):
-	# 	token = line[i]
-
-	#print(line)
-
-
-
-
-#print(registers)
-
-# for i in range(len(s)):
-# 	token = s[i]
-# 	if token not in instr_len:
-# 		continue
-# 	tokens = s[i:i + 1 + instr_len[token]]
-# 	print(tokens)
-# 	if tokens[0] == 'load':
-# 		if tokens[2] in regs:
-# 			pass
-# 		elif len(tokens[2]) >= 3 and tokens[2][0:2] in {'0x', '0b', '0d'}:
-# 			print(tokens[2])
-	# 	token_1 
-	# 	#s[i + 2]
-	# 	print(s[i + 2][0:2])
-	#print(token)
-
-def token_to_imm(token):
-	#print(bool(re.match('^[0-9]+$', token)))
-	# check if token is a decimal number
-	if bool(re.match('^-*[0-9]+$', token)):
-		imm = int(token) & 0xff
-		return imm 
-	# check if token is a hex or binary number
-	elif len(token) > 2:
-		if token[0:2] == '0x' and bool(re.match('^[0-9a-f]+$', token[2:])):
-			imm = int(token, base = 16) & 0xff
-			return imm
-		if token[0:2] == '0b' and bool(re.match('^[0-1]+$', token[2:])):
-			imm = int(token, base = 2) & 0xff
-			return imm
-	return None
-
-	#if len(stoken)
-
-
-imm = token_to_imm('-3')
-
-instr = ['load', 'r7', '0x00']
-imm = 0xff
-r_2 = 0x0
-r_0 = 0x5
-binary = instr__load_imm(r_2, imm)
-#print('{:016b}'.format(binary))
-binary = instr__load_mem(r_2, r_0)
-#print('{:016b}'.format(binary))
-
-r_2 = 0x2
-r_1 = 0x1
-r_0 = 0x0
-func = 0x7
-binary = instr__add(r_0, r_1, r_2)
-#print('{:016b}'.format(binary))
-
-r_2 = 0x7
-imm = 0x0
-binary = instr__jump_relative(r_2, imm)
-#print('{:016b}'.format(binary))
-
-
-r_1 = 0x7
-r_0 = 0x7
-
-binary = instr__store(r_0, r_1)
-# print('{:016b}'.format(binary))
-
-r_1 = 0x7
-r_0 = 0x7
-imm = 0x31
-binary = instr__beq(r_0, r_1, imm)
-# print('{:016b}'.format(binary))
-
-# print(int('0x00'))
-
 #############
 # Assembler #
 #############
 class Assembler:
-	def __init__(self):
+
+	############
+	# __init__ #
+	############
+	def __init__(self, file_in):
 		# registers
-		self.registers = set(['r' + str(i) for i in range(8)])
+		self.registers = set(['r0', 'r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7'])
 		# instruction set
 		self.instruction_set = set(['load', 'store', 'jump', 'beq', 'bne', 'blt', 'ble', 'add', 'sub'])
+		# source code
+		self.src = open(file_in).read()
+		# tokens
+		self.tokens = []
+		# instructions
+		self.instructions = []
+		# labels
+		self.labels = {}
+		# debug info for instructions
+		self.debug_info = []
+		# machine code
+		self.instructions_binary = []
+
 		# constants
 		self.OP__FUNC = 0x0
 		self.OP__LOAD = 0x1
@@ -376,71 +39,347 @@ class Assembler:
 		self.OP_EXT_0__LOAD_MEM = 0x2
 		self.OP_EXT_0__JUMP_RELATIVE = 0x1
 		self.OP_EXT_0__JUMP_INDIRECT = 0x3
-		self.OP_EXT_1__BEQ = 0x0
-		self.OP_EXT_1__BNE = 0x1
-		self.OP_EXT_1__BLT = 0x2
-		self.OP_EXT_1__BLE = 0x3
+		self.BRANCH__BEQ = 0x0
+		self.BRANCH__BNE = 0x1
+		self.BRANCH__BLT = 0x2
+		self.BRANCH__BLE = 0x3
 		self.FUNC__ADD = 0x0
 		self.FUNC__SUB = 0x1
 
-
-		# print(self.registers)
-		# print(self.instruction_set)
-
-	def Run(self):
-		file = open('t_0.txt').read()
-		print('=================================')
-		print(file)
-		print('=================================')
-		file = self.Preprocess(file)
-		print(file)
-		print('=================================')
-		# file = open('a.txt', 'w')
-		pass
-
-	def Preprocess(self, file):
-		file = file.lower()
-		file = re.sub('//.*', '', file)
-		file = re.sub('\t+', ' ', file)
-		file = re.sub(' +', ' ', file)
-		return file
-
-	def instr__load_imm(r_2, imm):
-		return (((imm & 0xff) << 8) | ((self.OP_EXT_0__LOAD_IMM & 0x7)<< 5) | ((r_2 & 0x7) << 2) | (self.OP__LOAD & 0x3)) & 0xffff
-
-	def instr__load_mem(r_0, r_2):
-		return (((r_0 & 0x7) << 8) | ((self.OP_EXT_0__LOAD_IMM & 0x7)<< 5) | ((r_2 & 0x7) << 2) | (self.OP__LOAD & 0x3)) & 0x07ff
-
-	def instr__add(r_0, r_1, r_2):
-		return (((self.FUNC__ADD & 0x7) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | ((r_2 & 0x7) << 2) | (self.OP__FUNC & 0x3)) & 0x3fff
-
-	def instr__add(r_0, r_1, r_2):
-		return (((FUNC__SUB & 0x7) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | ((r_2 & 0x7) << 2) | (self.OP__FUNC & 0x3)) & 0x3fff
-
-	def instr__jump_relative(r_2, imm):
-		return (((imm & 0xff) << 8) | ((self.OP_EXT_0__JUMP_RELATIVE & 0x7) << 5) | ((r_2 & 0x7) << 2) | (self.OP__JUMP & 0x3)) & 0xffff
-
-	def instr__jump_indirect(r_0, r_2):
-		return (((r_0 & 0x7) << 8) | ((self.OP_EXT_0__JUMP_INDIRECT & 0x7) << 5) | ((r_2 & 0x7) << 2) | (self.OP__JUMP & 0x3)) & 0x07ff
-
-	def instr__store(r_0, r_1):
-		return (((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (self.OP__STORE & 0x3)) & 0x07fe3
-
-	def instr__beq(r_0, r_1, imm):
-		return (((imm & 0x1f) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((self.OP_EXT_1__BEQ & 0x3) << 2) | (self.OP__BRANCH & 0x3)) & 0xffff
-
-	def instr__bne(r_0, r_1, imm):
-		return (((imm & 0x1f) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((self.OP_EXT_1__BNE & 0x3) << 2) | (self.OP__BRANCH & 0x3)) & 0xffff
-
-	def instr__blt(r_0, r_1, imm):
-		return (((imm & 0x1f) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((self.OP_EXT_1__BLT & 0x3) << 2) | (self.OP__BRANCH & 0x3)) & 0xffff
-
-	def instr__ble(r_0, r_1, imm):
-		return (((imm & 0x1f) << 11) | ((r_0 & 0x7) << 8) | ((r_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((self.OP_EXT_1__BLE & 0x3) << 2) | (self.OP__BRANCH & 0x3)) & 0xffff
+		# list of functions
+		self.func = {'add': self.FUNC__ADD, 'sub': self.FUNC__SUB}
+		self.branch = {'beq': self.BRANCH__BEQ, 'bne': self.BRANCH__BNE, 'blt': self.BRANCH__BLT, 'ble': self.BRANCH__BLE}
 
 
-assembler = Assembler()
-assembler.Run()
+	########
+	# save #
+	########
+	def save(self, file_name):
+		if bool(re.match('[A-z_]+[A-z_0-9]*\.coe', file_name)):
+			self.save__coe(file_name)
 
+	def save__coe(self, file_name):
+		file = open(file_name, 'w')
+		file.write('memory_initialization_radix=2;\n')
+		file.write('memory_initialization_vector=\n')
+
+		for i in range(len(self.instructions_binary)):
+			binary = self.instructions_binary[i]
+			if i == len(self.instructions_binary) - 1:
+				file.write('{:016b};\n'.format(binary))
+			else:
+				file.write('{:016b},\n'.format(binary))
+
+	#######
+	# run #
+	#######
+	def run(self):
+		self.tokenize()
+		print(self.tokens)
+		self.parse_tokens()
+		self.assemble()
+		
+	############
+	# tokenize #
+	############
+	def tokenize(self):
+		self.tokens = []
+		for line in re.split('\n', self.src):
+			# make string all lower case
+			line = line.lower()
+			# remove comments
+			line = re.sub('//.*', '', line)
+			# convert tabs to spaces
+			line = re.sub('\t+', ' ', line)
+			# replace multiple spaces with a single space
+			line = re.sub(' +', ' ', line)
+			# remove any spaces before the begining of the line
+			line = re.sub('^ *', '', line)
+			# add a single spaces before ':' character
+			line = re.sub(' *:', ' :', line)
+			# remove any spaces before the end of the line
+			line = re.sub(' $', '', line)
+			# tokenize line
+			line = re.split(' |, ', re.sub('\n', '', line))
+			# add tokenized line to tokens
+			self.tokens.append(line)
+
+	################
+	# parse_tokens #
+	################
+	def parse_tokens(self):
+		# source file line number
+		line_number = 0
+		# instruction index
+		n = 0
+		for line in self.tokens:
+			# blank line
+			if line == ['']:
+				pass
+
+			# line contains a label
+			elif len(line) == 2 and bool(re.match('[A-z_]+', line[0])) and bool(re.match(':', line[1])):
+				label = line[0]
+				if label in self.instruction_set.union(self.registers):
+					print(f'[ERROR] Reserved words cannot be used as labels')
+				elif label in self.labels:
+					print(f'[ERROR] The label "{label}" has already been defined')
+				else:
+					self.labels[label] = n
+
+			# line is an instruction
+			elif line[0] in self.instruction_set:
+				instr = line
+				self.instructions.append(instr)
+				n += 1
+
+			# increment line number
+			line_number += 1
+
+	############
+	# assemble #
+	############
+	def assemble(self):
+		for n in range(len(self.instructions)):
+			instr = self.instructions[n]
+			op = instr[0]
+
+			if op in self.func:
+				binary = self.instr__func(instr)
+			elif op == 'jump':
+				binary = self.instr__jump(instr, n)
+			elif op == 'store':
+				binary = self.instr__store(instr)
+			elif op == 'load':
+				binary = self.instr__load(instr)
+			elif op in self.branch:
+				binary = self.instr__branch(instr, n)
+
+			self.instructions_binary.append(binary)
+
+	###############
+	# instr__func #
+	###############
+	def instr__func(self, instr):
+		# check instruction length
+		if len(instr) != 4:
+			print(f'[ERROR] Invalid op')
+
+		# make assignments
+		op, r_2, r_0, r_1 = instr
+
+		# convert register token to address
+		addr_0 = self.token_to_addr(r_0)
+		addr_1 = self.token_to_addr(r_1)
+		addr_2 = self.token_to_addr(r_2)
+
+		# check if format matches the instruction
+		if op not in self.func:
+			print(f'[ERROR] Instruction is not supported in this format')
+
+		# check if valid register values were given
+		if (addr_0 == None) or (addr_1 == None) or (addr_2 == None):
+			print(f'[ERROR] Invalid arguments')
+
+		# get function encoding
+		func = self.func[op]
+		# build binary
+		binary = self.build__func(addr_0, addr_1, addr_2, func)
+		return binary
+
+	#################
+	# instr__branch #
+	#################
+	def instr__branch(self, instr, n):
+		# check instruction length
+		if len(instr) != 4:
+			print(f'[ERROR] Invalid op')
+
+		# make assignments
+		op, r_0, r_1, temp = instr
+
+		# convert register token to address
+		addr_0 = self.token_to_addr(r_0)
+		addr_1 = self.token_to_addr(r_1)
+		imm = self.token_to_imm(temp)
+		if imm == None:
+			if temp in self.labels:
+				imm = self.labels[temp] - n
+
+		# check if format matches the instruction
+		if op not in self.func:
+			print(f'[ERROR] Instruction is not supported in this format')
+
+		# check if valid register values were given
+		if (addr_0 == None) or (addr_1 == None) or (imm == None):
+			print(f'[ERROR] Invalid arguments')
+
+		# get function encoding
+		branch = self.branch[op]
+		# build binary
+		binary = self.build__branch(addr_0, addr_1, imm, branch)
+		return binary
+
+
+	###############
+	# instr__jump #
+	###############
+	def instr__jump(self, instr, n):
+		# check instruction length
+		if len(instr) != 3:
+			print(f'[ERROR] Invalid op')
+
+		# make assignments
+		op, r_2, temp = instr
+		# convert register token to address
+		addr_0 = self.token_to_addr(temp)
+		addr_2 = self.token_to_addr(r_2)
+		imm = self.token_to_imm(temp)
+		if imm == None:
+			if temp in self.labels:
+				imm = self.labels[temp] - n
+
+		if op != 'jump':
+			print(f'[ERROR] Invalid op')
+
+		# check if valid register values were given
+		if addr_2 == None:
+			print(f'[ERROR] Invalid argument')
+		
+		# indirect jump
+		if (addr_0 != None):
+			binary = self.build__jump_indirect(addr_0, addr_2)
+		elif (imm != None):
+			binary = self.build__jump_relative(addr_2, imm)
+		else:
+			print(f'[ERROR] Invalid argument')
+
+		return binary
+
+	###############
+	# instr__load #
+	###############
+	def instr__load(self, instr):
+		# check instruction length
+		if len(instr) != 3:
+			print(f'[ERROR] Invalid op')
+
+		# make assignments
+		op, r_2, temp = instr
+		# convert register token to address
+		addr_0 = self.token_to_addr(temp)
+		addr_2 = self.token_to_addr(r_2)
+		imm = self.token_to_imm(temp)
+
+		if op != 'load':
+			print(f'[ERROR] Invalid op')
+
+		# load from memory
+		if (addr_0 != None):
+			binary = self.build__load_mem(addr_0, addr_2)
+		# load immediate
+		elif (imm != None):
+			binary = self.build__load_imm(addr_2, imm)
+		else:
+			print(f'[ERROR] Invalid argument')
+		
+		return binary
+
+	################
+	# instr__store #
+	################
+	def instr__store(self, instr):
+		# check instruction length
+		if len(instr) != 3:
+			print(f'[ERROR] Invalid op')
+
+		# make assignments
+		op, r_1, r_0 = instr
+		# convert register token to address
+		addr_0 = self.token_to_addr(r_0)
+		addr_1 = self.token_to_addr(r_1)
+
+		if op != 'store':
+			print(f'[ERROR] Invalid op')
+
+		# check if valid register values were given
+		if (addr_0 == None) or (addr_1 == None):
+			print(f'[ERROR] Invalid argument')
+		
+		binary = self.build__store(addr_0, addr_1)
+		return binary
+
+	#################
+	# token_to_addr #
+	#################
+	def token_to_addr(self, token):
+		# check if token is a valid register
+		if token in self.registers:
+			return int(token[1:])
+		else:
+			return None
+
+	################
+	# token_to_imm #
+	################
+	def token_to_imm(self, token):
+		# check if token is a decimal number
+		if bool(re.match('^-?[0-9]+$', token)):
+			return int(token)
+		# check if number has hex base
+		elif bool(re.match('^0x[0-9a-f]+$', token)):
+			return int(token, base = 16)
+		# check if number has binary base
+		elif bool(re.match('^0b[0-1]+$', token)):
+			return int(token, base = 2)
+		
+		return None
+
+	###############
+	# build__func #
+	###############
+	def build__func(self, addr_0, addr_1, addr_2, func):
+		return (((func & 0x7) << 11) | ((addr_0 & 0x7) << 8) | ((addr_1 & 0x7) << 5) | ((addr_2 & 0x7) << 2) | (self.OP__FUNC & 0x3)) & 0x3fff
+
+	########################
+	# build__jump_relative #
+	########################
+	def build__jump_relative(self, addr_2, imm):
+		return (((imm & 0xff) << 8) | ((self.OP_EXT_0__JUMP_RELATIVE & 0x7) << 5) | ((addr_2 & 0x7) << 2) | (self.OP__JUMP & 0x3)) & 0xffff
+
+	########################
+	# build__jump_indirect #
+	########################
+	def build__jump_indirect(self, addr_0, addr_2):
+		return (((addr_0 & 0x7) << 8) | ((self.OP_EXT_0__JUMP_INDIRECT & 0x7) << 5) | ((addr_2 & 0x7) << 2) | (self.OP__JUMP & 0x3)) & 0x07ff
+
+	################
+	# build__store #
+	################
+	def build__store(self, addr_0, addr_1):
+		return (((addr_0 & 0x7) << 8) | ((addr_1 & 0x7) << 5) | (self.OP__STORE & 0x3)) & 0x07fe3
+
+	###################
+	# build__load_imm #
+	###################
+	def build__load_imm(self, addr_2, imm):
+		return (((imm & 0xff) << 8) | ((self.OP_EXT_0__LOAD_IMM & 0x7) << 5) | ((addr_2 & 0x7) << 2) | (self.OP__LOAD & 0x3)) & 0xffff
+
+	###################
+	# build__load_mem #
+	###################
+	def build__load_mem(self, addr_0, addr_2):
+		return (((addr_0 & 0x7) << 8) | ((self.OP_EXT_0__LOAD_MEM & 0x7) << 5) | ((addr_2 & 0x7) << 2) | (self.OP__LOAD & 0x3)) & 0x07ff
+
+	#################
+	# build__branch #
+	#################
+	def build__branch(self, addr_0, addr_1, imm, branch):
+		return (((imm & 0x1f) << 11) | ((addr_0 & 0x7) << 8) | ((addr_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((branch & 0x3) << 2) | (self.OP__BRANCH & 0x3)) & 0xffff
+
+
+assembler = Assembler('t_0.txt')
+assembler.run()
+assembler.save("t_0.coe")
 
 
