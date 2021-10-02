@@ -20,9 +20,7 @@ module central_processing_unit_tb;
         .data_0(data_0),
         .data_1(data_1),
         .data_memory_data_2(data_memory_data_2),
-        .data_memory_we(data_memory_we),
-        
-        .r_0(r_0), .r_1(r_1), .r_2(r_2), .r_3(r_3), .r_4(r_4), .r_5(r_5), .r_6(r_6), .r_7(r_7)
+        .data_memory_we(data_memory_we)
     );
     
     //==============================

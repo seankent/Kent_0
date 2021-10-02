@@ -24,84 +24,73 @@ module top
     //==============================
     // logic
     //==============================
+    // system
     logic clk;
     logic rst;
-    logic [15:0] counter_0_count;
-    logic btnd_clean;
-    logic [15:0] counter_1_count;
-    logic ov;
+    // central_processing_unit, program_memory, data_memory
+    logic [15:0] ir;
+    logic [7:0] pc;
+    logic [7:0] data_0;
+    logic [7:0] data_1;
+    logic [7:0] data_memory_data_2;
+    logic data_memory_we;
+    logic wea;
+    logic central_processing_unit_clk;
+    logic central_processing_unit_rst;
+    logic we_cycle;
     
     //==============================
     // assign
     //==============================
-    assign clk = clk_100mhz;
-    assign rst = btnc;
-    
-    //==============================
-    // seven_segment_display_0
-    //==============================
-    seven_segment_display seven_segment_display_0
-    (
-        .clk(clk),
-        .rst(rst),
-        .en(8'h13),
-        .n_0(counter_0_count[3:0]), .n_1(counter_0_count[7:4]), .n_2(4'h0), .n_3(4'h0), .n_4(counter_1_count[15:12]), .n_5(4'h0), .n_6(4'h0), .n_7(4'h0),
-        .an(an),
-        .ca(ca), .cb(cb), .cc(cc), .cd(cd), .ce(ce), .cf(cf), .cg(cg)
-    );
-    
-    //==============================
-    // debouncer_0
-    //==============================
-    debouncer debouncer_0
-    (
-        .clk(clk),
-        .rst(rst),
-        .in(btnd),
-        .out(btnd_clean)
-    );
-    
-    //==============================
-    // counter_0
-    //==============================
-    counter counter_0
-    (
-        .clk(clk),
-        .rst(rst),
-        .evt(btnd_clean),
-        .count(counter_0_count)
-    );
-    
-    //==============================
-    // timer_0
-    //==============================
-    timer timer_0
-    (
-        .clk(clk),
-        .rst(rst),
-        .N(16'h5F5E),
-        .ov(ov)
-    );
-    
-    //==============================
-    // counter_1
-    //==============================
-    counter counter_1
-    (
-        .clk(clk),
-        .rst(rst),
-        .evt(ov),
-        .count(counter_1_count)
-    );
-    
+    assign wea = data_memory_we & we_cycle;
 
-    
-//    (
-//        .clk(clk),
-//        .rst(rst),
-//        .en(1'b1),
-//        .count(timer_0_count)
-//    );
-    
+    //==============================
+    // system_0
+    //==============================
+    system system_0
+    (
+        .clk(clk),
+        .rst(rst),
+        .central_processing_unit_clk(central_processing_unit_clk),
+        .central_processing_unit_rst(central_processing_unit_rst),
+        .we_cycle(we_cycle)
+    );
 
+    //==============================
+    // central_processing_unit_0
+    //==============================
+    central_processing_unit central_processing_unit_0
+    (
+        .clk(central_processing_unit_clk),
+        .rst(rst),
+        .ir(ir),
+        .pc(pc),
+        .data_0(data_0),
+        .data_1(data_1),
+        .data_memory_data_2(data_memory_data_2),
+        .data_memory_we(data_memory_we)
+    );
+    
+    //==============================
+    // program_memory_0
+    //==============================
+    program_memory program_memory_0
+    (
+        .clka(clk),
+        .addra(pc),
+        .douta(ir)
+    );
+    
+    //==============================
+    // data_memory_0
+    //==============================
+    data_memory data_memory_0
+    (
+        .clka(clk),
+        .wea(wea),
+        .addra(data_0),
+        .dina(data_1),
+        .douta(data_memory_data_2)
+    );
+    
 endmodule

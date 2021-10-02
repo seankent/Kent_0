@@ -11,16 +11,7 @@ module register_file
     input logic [2:0] addr_2,
     output logic [7:0] data_0,
     output logic [7:0] data_1,
-    input logic [7:0] data_2,
-    
-    output [7:0] r_0,
-    output [7:0] r_1,
-    output [7:0] r_2,
-    output [7:0] r_3,
-    output [7:0] r_4,
-    output [7:0] r_5,
-    output [7:0] r_6,
-    output [7:0] r_7
+    input logic [7:0] data_2
 );
 
     //==============================

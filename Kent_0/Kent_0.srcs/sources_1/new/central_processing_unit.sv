@@ -10,16 +10,7 @@ module central_processing_unit
     output [7:0] data_0,
     output [7:0] data_1,
     input logic [7:0] data_memory_data_2,
-    output data_memory_we, 
-    
-    output [7:0] r_0,
-    output [7:0] r_1,
-    output [7:0] r_2,
-    output [7:0] r_3,
-    output [7:0] r_4,
-    output [7:0] r_5,
-    output [7:0] r_6,
-    output [7:0] r_7
+    output data_memory_we
 );
 
     //==============================
@@ -40,12 +31,6 @@ module central_processing_unit
     logic [1:0] data_2_sel;
     logic eq, ne, lt, le;
     logic data_memory_we;
-    
-    //==============================
-    // debug logic
-    //==============================
-    logic [7:0] r_0, r_1, r_2, r_3, r_4, r_5, r_6, r_7;
-  
     
     //==============================
     // program_counter_0
@@ -113,9 +98,7 @@ module central_processing_unit
         .addr_2(addr_2),
         .data_0(data_0),
         .data_1(data_1),
-        .data_2(data_2),
-        
-        .r_0(r_0), .r_1(r_1), .r_2(r_2), .r_3(r_3), .r_4(r_4), .r_5(r_5), .r_6(r_6), .r_7(r_7)
+        .data_2(data_2)
     );
 
     //==============================
