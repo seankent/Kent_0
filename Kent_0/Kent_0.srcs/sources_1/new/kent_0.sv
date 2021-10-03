@@ -4,7 +4,9 @@
 module kent_0
 (   
     input clk,
-    input rst
+    input rst,
+    output [7:0] port_0_data,
+    output [7:0] port_1_data
 );
 
     //==============================
@@ -19,16 +21,18 @@ module kent_0
     logic [7:0] data_0;
     logic [7:0] data_1;
     logic [7:0] data_memory_data_2;
-    logic data_memory_we;
+    logic memory_we;
     logic wea;
     logic central_processing_unit_clk;
     logic central_processing_unit_rst;
-    logic we_cycle;
+    logic [7:0] port_0_data;
+    logic [7:0] port_1_data;
+    logic port_0_we;
+    logic prot_1_we;
     
     //==============================
     // assign
     //==============================
-    assign wea = data_memory_we & we_cycle;
 
     //==============================
     // system_0
@@ -37,9 +41,13 @@ module kent_0
     (
         .clk(clk),
         .rst(rst),
+        .memory_we(memory_we),
+        .data_0(data_0),
         .central_processing_unit_clk(central_processing_unit_clk),
         .central_processing_unit_rst(central_processing_unit_rst),
-        .we_cycle(we_cycle)
+        .wea(wea),
+        .port_0_we(port_0_we),
+        .port_1_we(port_1_we)
     );
 
     //==============================
@@ -54,7 +62,7 @@ module kent_0
         .data_0(data_0),
         .data_1(data_1),
         .data_memory_data_2(data_memory_data_2),
-        .data_memory_we(data_memory_we)
+        .memory_we(memory_we)
     );
     
     //==============================
@@ -77,6 +85,25 @@ module kent_0
         .addra(data_0),
         .dina(data_1),
         .douta(data_memory_data_2)
+    );
+    
+    
+    port port_0
+    (
+        .clk(clk),
+        .rst(rst),
+        .we(port_0_we),
+        .data_0(data_1),
+        .data_1(port_0_data)
+    );
+    
+    port port_1
+    (
+        .clk(clk),
+        .rst(rst),
+        .we(port_1_we),
+        .data_0(data_1),
+        .data_1(port_1_data)
     );
     
 endmodule

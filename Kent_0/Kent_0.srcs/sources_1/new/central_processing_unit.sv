@@ -10,7 +10,7 @@ module central_processing_unit
     output [7:0] data_0,
     output [7:0] data_1,
     input logic [7:0] data_memory_data_2,
-    output data_memory_we
+    output memory_we
 );
 
     //==============================
@@ -30,7 +30,7 @@ module central_processing_unit
     logic [2:0] ctrl_flow_type;
     logic [1:0] data_2_sel;
     logic eq, ne, lt, le;
-    logic data_memory_we;
+    logic memory_we;
     
     //==============================
     // program_counter_0
@@ -67,7 +67,7 @@ module central_processing_unit
         .we(we),
         .ctrl_flow_type(ctrl_flow_type),
         .data_2_sel(data_2_sel),
-        .data_memory_we(data_memory_we)
+        .memory_we(memory_we)
     );
     
     //==============================

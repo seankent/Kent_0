@@ -5,9 +5,13 @@ module system
 (
     input logic clk,
     input logic rst,
+    input logic memory_we,
+    input logic [7:0] data_0,
     output logic central_processing_unit_clk,
     output logic central_processing_unit_rst,
-    output we_cycle
+    output logic wea,
+    output logic port_0_we,
+    output logic port_1_we
 );
 
     //==============================
@@ -27,7 +31,9 @@ module system
     logic [2:0] state;
     logic central_processing_unit_clk;
     logic central_processing_unit_rst;
-    logic we_cycle;
+    logic wea;
+    logic port_0_we;
+    logic port_1_we;
     
     //==============================
     // always_ff
@@ -71,11 +77,37 @@ module system
     // always_ff
     //==============================
     always_ff @(posedge clk) begin
-        if (rst) we_cycle <= 1'b0;
+        if (rst) wea <= 1'b0;
         else begin
             case (state)
-                STATE_4: we_cycle <= 1'b1;
-                STATE_5: we_cycle <= 1'b0;
+                STATE_4: wea <= memory_we ? 1'b1 : 1'b0;
+                STATE_5: wea <= 1'b0;
+            endcase
+        end
+    end
+    
+    //==============================
+    // always_ff
+    //==============================
+    always_ff @(posedge clk) begin
+        if (rst) port_0_we <= 1'b0;
+        else begin
+            case (state)
+                STATE_4: port_0_we <= (memory_we & (data_0 == 8'hfe)) ? 1'b1 : 1'b0;
+                STATE_5: port_0_we <= 1'b0;
+            endcase
+        end
+    end
+    
+    //==============================
+    // always_ff
+    //==============================
+    always_ff @(posedge clk) begin
+        if (rst) port_1_we <= 1'b0;
+        else begin
+            case (state)
+                STATE_4: port_1_we <= (memory_we & (data_0 == 8'hff)) ? 1'b1 : 1'b0;
+                STATE_5: port_1_we <= 1'b0;
             endcase
         end
     end

@@ -15,57 +15,156 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 19324 
-WARNING: [Synth 8-992] n is already implicitly declared earlier [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/seven_segment_display.sv:28]
+INFO: Helper process launched with PID 12948 
+WARNING: [Synth 8-2611] redeclaration of ansi port pc is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:19]
+WARNING: [Synth 8-2611] redeclaration of ansi port data_0 is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:24]
+WARNING: [Synth 8-2611] redeclaration of ansi port data_1 is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:24]
+WARNING: [Synth 8-2611] redeclaration of ansi port memory_we is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:33]
+WARNING: [Synth 8-2611] redeclaration of ansi port clk is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv:16]
+WARNING: [Synth 8-2611] redeclaration of ansi port rst is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv:17]
+WARNING: [Synth 8-2611] redeclaration of ansi port port_0_data is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv:28]
+WARNING: [Synth 8-2611] redeclaration of ansi port port_1_data is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv:29]
+WARNING: [Synth 8-2611] redeclaration of ansi port data_1 is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv:16]
+WARNING: [Synth 8-976] data_1 has already been declared [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv:16]
+WARNING: [Synth 8-2654] second declaration of data_1 ignored [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv:16]
+INFO: [Synth 8-994] data_1 is declared here [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv:9]
+WARNING: [Synth 8-2611] redeclaration of ansi port central_processing_unit_clk is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:32]
+WARNING: [Synth 8-976] central_processing_unit_clk has already been declared [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:32]
+WARNING: [Synth 8-2654] second declaration of central_processing_unit_clk ignored [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:32]
+INFO: [Synth 8-994] central_processing_unit_clk is declared here [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:10]
+WARNING: [Synth 8-2611] redeclaration of ansi port central_processing_unit_rst is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:33]
+WARNING: [Synth 8-976] central_processing_unit_rst has already been declared [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:33]
+WARNING: [Synth 8-2654] second declaration of central_processing_unit_rst ignored [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:33]
+INFO: [Synth 8-994] central_processing_unit_rst is declared here [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:11]
+WARNING: [Synth 8-2611] redeclaration of ansi port wea is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:34]
+WARNING: [Synth 8-976] wea has already been declared [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:34]
+WARNING: [Synth 8-2654] second declaration of wea ignored [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:34]
+INFO: [Synth 8-994] wea is declared here [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:12]
+WARNING: [Synth 8-2611] redeclaration of ansi port port_0_we is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:35]
+WARNING: [Synth 8-976] port_0_we has already been declared [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:35]
+WARNING: [Synth 8-2654] second declaration of port_0_we ignored [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:35]
+INFO: [Synth 8-994] port_0_we is declared here [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:13]
+WARNING: [Synth 8-2611] redeclaration of ansi port port_1_we is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:36]
+WARNING: [Synth 8-976] port_1_we has already been declared [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:36]
+WARNING: [Synth 8-2654] second declaration of port_1_we ignored [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:36]
+INFO: [Synth 8-994] port_1_we is declared here [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:14]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 879.508 ; gain = 238.965
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 890.273 ; gain = 239.367
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv:4]
-INFO: [Synth 8-6157] synthesizing module 'seven_segment_display' [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/seven_segment_display.sv:4]
-INFO: [Synth 8-6157] synthesizing module 'binary_to_seven_segment' [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/binary_to_seven_segment.sv:4]
-INFO: [Synth 8-6155] done synthesizing module 'binary_to_seven_segment' (1#1) [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/binary_to_seven_segment.sv:4]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/seven_segment_display.sv:36]
-WARNING: [Synth 8-87] always_comb on 'n_reg' did not result in combinational logic [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/seven_segment_display.sv:21]
-INFO: [Synth 8-6155] done synthesizing module 'seven_segment_display' (2#1) [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/seven_segment_display.sv:4]
-INFO: [Synth 8-6157] synthesizing module 'debouncer' [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/debouncer.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'kent_0' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'system' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:4]
+	Parameter STATE_0 bound to: 3'b000 
+	Parameter STATE_1 bound to: 3'b001 
+	Parameter STATE_2 bound to: 3'b010 
+	Parameter STATE_3 bound to: 3'b011 
+	Parameter STATE_4 bound to: 3'b100 
+	Parameter STATE_5 bound to: 3'b101 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:44]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:61]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:82]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:95]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:108]
+INFO: [Synth 8-6155] done synthesizing module 'system' (1#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'central_processing_unit' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'program_counter' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/program_counter.sv:4]
+	Parameter CTRL_FLOW_TYPE__PC_PLUS_ONE bound to: 3'b000 
+	Parameter CTRL_FLOW_TYPE__RELATIVE_JUMP bound to: 3'b001 
+	Parameter CTRL_FLOW_TYPE__INDIRECT_JUMP bound to: 3'b010 
+	Parameter CTRL_FLOW_TYPE__BEQ bound to: 3'b011 
+	Parameter CTRL_FLOW_TYPE__BNE bound to: 3'b100 
+	Parameter CTRL_FLOW_TYPE__BLT bound to: 3'b101 
+	Parameter CTRL_FLOW_TYPE__BLE bound to: 3'b110 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/program_counter.sv:43]
+INFO: [Synth 8-6155] done synthesizing module 'program_counter' (2#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/program_counter.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'decode' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:4]
+	Parameter F0 bound to: 2'b00 
+	Parameter F1 bound to: 2'b01 
+	Parameter F2 bound to: 2'b10 
+	Parameter F3 bound to: 2'b11 
+	Parameter INSTR_TYPE__FUNC bound to: 3'b000 
+	Parameter INSTR_TYPE__LOAD bound to: 3'b001 
+	Parameter INSTR_TYPE__STORE bound to: 3'b010 
+	Parameter INSTR_TYPE__JUMP bound to: 3'b011 
+	Parameter INSTR_TYPE__BRANCH bound to: 3'b100 
+	Parameter CTRL_FLOW_TYPE__PC_PLUS_ONE bound to: 3'b000 
+	Parameter CTRL_FLOW_TYPE__RELATIVE_JUMP bound to: 3'b001 
+	Parameter CTRL_FLOW_TYPE__INDIRECT_JUMP bound to: 3'b010 
+	Parameter CTRL_FLOW_TYPE__BEQ bound to: 3'b011 
+	Parameter CTRL_FLOW_TYPE__BNE bound to: 3'b100 
+	Parameter CTRL_FLOW_TYPE__BLT bound to: 3'b101 
+	Parameter CTRL_FLOW_TYPE__BLE bound to: 3'b110 
+	Parameter DATA_2_SEL__ALU bound to: 2'b00 
+	Parameter DATA_2_SEL__IMM bound to: 2'b01 
+	Parameter DATA_2_SEL__MEM bound to: 2'b10 
+	Parameter DATA_2_SEL__PC_PLUS_ONE bound to: 2'b11 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:80]
+WARNING: [Synth 8-87] always_comb on 'we_reg' did not result in combinational logic [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:83]
+WARNING: [Synth 8-87] always_comb on 'data_2_sel_reg' did not result in combinational logic [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:84]
+WARNING: [Synth 8-87] always_comb on 'ctrl_flow_type_reg' did not result in combinational logic [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:85]
+WARNING: [Synth 8-87] always_comb on 'memory_we_reg' did not result in combinational logic [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:86]
+INFO: [Synth 8-6155] done synthesizing module 'decode' (3#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'mux_4_to_1' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/mux_4_to_1.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4_to_1' (4#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/mux_4_to_1.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'register_file' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/register_file.sv:4]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/register_file.sv:63]
+INFO: [Synth 8-6155] done synthesizing module 'register_file' (5#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/register_file.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'arithmetic_logic_unit' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/arithmetic_logic_unit.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'arithmetic_logic_unit' (6#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/arithmetic_logic_unit.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'central_processing_unit' (7#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'program_memory' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6528-DESKTOP-18I9AUK/realtime/program_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'program_memory' (8#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6528-DESKTOP-18I9AUK/realtime/program_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'data_memory' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6528-DESKTOP-18I9AUK/realtime/data_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'data_memory' (9#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6528-DESKTOP-18I9AUK/realtime/data_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'port' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'port' (10#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'kent_0' (11#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'debouncer' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/debouncer.sv:4]
 	Parameter DEBOUNCE_COUNT bound to: 20'b11110100001001000000 
-INFO: [Synth 8-6155] done synthesizing module 'debouncer' (3#1) [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/debouncer.sv:4]
-INFO: [Synth 8-6157] synthesizing module 'counter' [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/edge_detector.sv:4]
-INFO: [Synth 8-6155] done synthesizing module 'counter' (4#1) [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/edge_detector.sv:4]
-INFO: [Synth 8-6157] synthesizing module 'timer' [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/timer.sv:41]
-INFO: [Synth 8-6155] done synthesizing module 'timer' (5#1) [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/timer.sv:41]
-WARNING: [Synth 8-3848] Net led in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv:13]
-WARNING: [Synth 8-3848] Net led16_b in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv:14]
-WARNING: [Synth 8-3848] Net led16_g in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv:15]
-WARNING: [Synth 8-3848] Net led16_r in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv:16]
-WARNING: [Synth 8-3848] Net led17_b in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv:17]
-WARNING: [Synth 8-3848] Net led17_g in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv:18]
-WARNING: [Synth 8-3848] Net led17_r in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv:19]
-INFO: [Synth 8-6155] done synthesizing module 'top' (6#1) [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv:4]
-WARNING: [Synth 8-3331] design binary_to_seven_segment has unconnected port clk
-WARNING: [Synth 8-3331] design binary_to_seven_segment has unconnected port rst
-WARNING: [Synth 8-3331] design top has unconnected port led[15]
-WARNING: [Synth 8-3331] design top has unconnected port led[14]
-WARNING: [Synth 8-3331] design top has unconnected port led[13]
-WARNING: [Synth 8-3331] design top has unconnected port led[12]
-WARNING: [Synth 8-3331] design top has unconnected port led[11]
-WARNING: [Synth 8-3331] design top has unconnected port led[10]
-WARNING: [Synth 8-3331] design top has unconnected port led[9]
-WARNING: [Synth 8-3331] design top has unconnected port led[8]
-WARNING: [Synth 8-3331] design top has unconnected port led[7]
-WARNING: [Synth 8-3331] design top has unconnected port led[6]
-WARNING: [Synth 8-3331] design top has unconnected port led[5]
-WARNING: [Synth 8-3331] design top has unconnected port led[4]
-WARNING: [Synth 8-3331] design top has unconnected port led[3]
-WARNING: [Synth 8-3331] design top has unconnected port led[2]
-WARNING: [Synth 8-3331] design top has unconnected port led[1]
-WARNING: [Synth 8-3331] design top has unconnected port led[0]
+INFO: [Synth 8-6155] done synthesizing module 'debouncer' (12#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/debouncer.sv:4]
+WARNING: [Synth 8-3848] Net led16_b in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:14]
+WARNING: [Synth 8-3848] Net led16_g in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:15]
+WARNING: [Synth 8-3848] Net led16_r in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:16]
+WARNING: [Synth 8-3848] Net led17_b in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:17]
+WARNING: [Synth 8-3848] Net led17_g in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:18]
+WARNING: [Synth 8-3848] Net led17_r in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:19]
+WARNING: [Synth 8-3848] Net an in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:20]
+WARNING: [Synth 8-3848] Net ca in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:21]
+WARNING: [Synth 8-3848] Net cb in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:21]
+WARNING: [Synth 8-3848] Net cc in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:21]
+WARNING: [Synth 8-3848] Net cd in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:21]
+WARNING: [Synth 8-3848] Net ce in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:21]
+WARNING: [Synth 8-3848] Net cf in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:21]
+WARNING: [Synth 8-3848] Net cg in module/entity top does not have driver. [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:21]
+INFO: [Synth 8-6155] done synthesizing module 'top' (13#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:4]
+WARNING: [Synth 8-3331] design arithmetic_logic_unit has unconnected port clk
+WARNING: [Synth 8-3331] design arithmetic_logic_unit has unconnected port rst
+WARNING: [Synth 8-3331] design register_file has unconnected port rst
+WARNING: [Synth 8-3331] design mux_4_to_1 has unconnected port clk
+WARNING: [Synth 8-3331] design mux_4_to_1 has unconnected port rst
+WARNING: [Synth 8-3331] design decode has unconnected port clk
+WARNING: [Synth 8-3331] design decode has unconnected port rst
 WARNING: [Synth 8-3331] design top has unconnected port led16_b
 WARNING: [Synth 8-3331] design top has unconnected port led16_g
 WARNING: [Synth 8-3331] design top has unconnected port led16_r
 WARNING: [Synth 8-3331] design top has unconnected port led17_b
 WARNING: [Synth 8-3331] design top has unconnected port led17_g
 WARNING: [Synth 8-3331] design top has unconnected port led17_r
+WARNING: [Synth 8-3331] design top has unconnected port an[7]
+WARNING: [Synth 8-3331] design top has unconnected port an[6]
+WARNING: [Synth 8-3331] design top has unconnected port an[5]
+WARNING: [Synth 8-3331] design top has unconnected port an[4]
+WARNING: [Synth 8-3331] design top has unconnected port an[3]
+WARNING: [Synth 8-3331] design top has unconnected port an[2]
+WARNING: [Synth 8-3331] design top has unconnected port an[1]
+WARNING: [Synth 8-3331] design top has unconnected port an[0]
+WARNING: [Synth 8-3331] design top has unconnected port ca
+WARNING: [Synth 8-3331] design top has unconnected port cb
+WARNING: [Synth 8-3331] design top has unconnected port cc
+WARNING: [Synth 8-3331] design top has unconnected port cd
+WARNING: [Synth 8-3331] design top has unconnected port ce
+WARNING: [Synth 8-3331] design top has unconnected port cf
+WARNING: [Synth 8-3331] design top has unconnected port cg
 WARNING: [Synth 8-3331] design top has unconnected port sw[15]
 WARNING: [Synth 8-3331] design top has unconnected port sw[14]
 WARNING: [Synth 8-3331] design top has unconnected port sw[13]
@@ -82,11 +181,12 @@ WARNING: [Synth 8-3331] design top has unconnected port sw[3]
 WARNING: [Synth 8-3331] design top has unconnected port sw[2]
 WARNING: [Synth 8-3331] design top has unconnected port sw[1]
 WARNING: [Synth 8-3331] design top has unconnected port sw[0]
+WARNING: [Synth 8-3331] design top has unconnected port btnc
 WARNING: [Synth 8-3331] design top has unconnected port btnu
 WARNING: [Synth 8-3331] design top has unconnected port btnl
 WARNING: [Synth 8-3331] design top has unconnected port btnr
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 926.914 ; gain = 286.371
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 940.871 ; gain = 289.965
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -99,46 +199,72 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 926.914 ; gain = 286.371
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 940.871 ; gain = 289.965
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 926.914 ; gain = 286.371
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 940.871 ; gain = 289.965
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 926.914 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 940.871 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc]
-Finished Parsing XDC File [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
+Parsing XDC File [c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/data_memory/data_memory/random_access_memory_in_context.xdc] for cell 'k0/data_memory_0'
+Finished Parsing XDC File [c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/data_memory/data_memory/random_access_memory_in_context.xdc] for cell 'k0/data_memory_0'
+Parsing XDC File [c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/program_memory/program_memory/program_memory_in_context.xdc] for cell 'k0/program_memory_0'
+Finished Parsing XDC File [c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/program_memory/program_memory/program_memory_in_context.xdc] for cell 'k0/program_memory_0'
+Parsing XDC File [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc]
+Finished Parsing XDC File [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1044.352 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1058.875 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1044.352 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1058.875 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'k0/data_memory_0' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'k0/program_memory_0' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1044.352 ; gain = 403.809
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.676 ; gain = 415.770
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1044.352 ; gain = 403.809
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.676 ; gain = 415.770
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for k0/data_memory_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for k0/program_memory_0. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1044.352 ; gain = 403.809
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.676 ; gain = 415.770
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-327] inferring latch for variable 'n_reg' [C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/seven_segment_display.sv:21]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'system'
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/arithmetic_logic_unit.sv:30]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 STATE_0 |                           000001 |                              000
+                 STATE_1 |                           000010 |                              001
+                 STATE_2 |                           000100 |                              010
+                 STATE_3 |                           001000 |                              011
+                 STATE_4 |                           010000 |                              100
+                 STATE_5 |                           100000 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'system'
+WARNING: [Synth 8-327] inferring latch for variable 'we_reg' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:83]
+WARNING: [Synth 8-327] inferring latch for variable 'ctrl_flow_type_reg' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:85]
+WARNING: [Synth 8-327] inferring latch for variable 'data_2_sel_reg' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:84]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_we_reg' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:86]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1044.352 ; gain = 403.809
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.676 ; gain = 415.770
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -152,17 +278,27 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     20 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 2     
+	   3 Input      8 Bit       Adders := 1     
++---XORs : 
+	   2 Input      8 Bit         XORs := 1     
 +---Registers : 
 	               20 Bit    Registers := 1     
-	                8 Bit    Registers := 2     
-	                1 Bit    Registers := 5     
+	                8 Bit    Registers := 10    
+	                1 Bit    Registers := 7     
 +---Muxes : 
 	   2 Input     20 Bit        Muxes := 1     
-	   9 Input      4 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 5     
+	   4 Input      8 Bit        Muxes := 1     
+	   8 Input      8 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 2     
 	   9 Input      3 Bit        Muxes := 1     
-	  16 Input      1 Bit        Muxes := 7     
-	   9 Input      1 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 4     
+	   3 Input      1 Bit        Muxes := 5     
+	   8 Input      1 Bit        Muxes := 8     
+	   2 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -170,18 +306,53 @@ Finished RTL Component Statistics
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
 Hierarchical RTL Component report 
-Module binary_to_seven_segment 
-Detailed RTL Component Info : 
-+---Muxes : 
-	  16 Input      1 Bit        Muxes := 7     
-Module seven_segment_display 
+Module system 
 Detailed RTL Component Info : 
 +---Registers : 
-	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 5     
 +---Muxes : 
-	   9 Input      4 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 5     
+Module program_counter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 2     
++---Registers : 
+	                8 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 4     
+	   8 Input      1 Bit        Muxes := 1     
+Module decode 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 2     
 	   9 Input      3 Bit        Muxes := 1     
-	   9 Input      1 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 3     
+Module mux_4_to_1 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input      8 Bit        Muxes := 1     
+Module register_file 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 7     
++---Muxes : 
+	   8 Input      1 Bit        Muxes := 7     
+Module arithmetic_logic_unit 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      8 Bit       Adders := 1     
++---XORs : 
+	   2 Input      8 Bit         XORs := 1     
++---Muxes : 
+	   8 Input      8 Bit        Muxes := 1     
+Module port 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
 Module debouncer 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -191,16 +362,6 @@ Detailed RTL Component Info :
 	                1 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input     20 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 1     
-Module counter 
-Detailed RTL Component Info : 
-+---Registers : 
-	                1 Bit    Registers := 1     
-Module timer 
-Detailed RTL Component Info : 
-+---Registers : 
-	                1 Bit    Registers := 1     
-+---Muxes : 
 	   2 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
@@ -218,28 +379,27 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-WARNING: [Synth 8-3331] design top has unconnected port led[15]
-WARNING: [Synth 8-3331] design top has unconnected port led[14]
-WARNING: [Synth 8-3331] design top has unconnected port led[13]
-WARNING: [Synth 8-3331] design top has unconnected port led[12]
-WARNING: [Synth 8-3331] design top has unconnected port led[11]
-WARNING: [Synth 8-3331] design top has unconnected port led[10]
-WARNING: [Synth 8-3331] design top has unconnected port led[9]
-WARNING: [Synth 8-3331] design top has unconnected port led[8]
-WARNING: [Synth 8-3331] design top has unconnected port led[7]
-WARNING: [Synth 8-3331] design top has unconnected port led[6]
-WARNING: [Synth 8-3331] design top has unconnected port led[5]
-WARNING: [Synth 8-3331] design top has unconnected port led[4]
-WARNING: [Synth 8-3331] design top has unconnected port led[3]
-WARNING: [Synth 8-3331] design top has unconnected port led[2]
-WARNING: [Synth 8-3331] design top has unconnected port led[1]
-WARNING: [Synth 8-3331] design top has unconnected port led[0]
 WARNING: [Synth 8-3331] design top has unconnected port led16_b
 WARNING: [Synth 8-3331] design top has unconnected port led16_g
 WARNING: [Synth 8-3331] design top has unconnected port led16_r
 WARNING: [Synth 8-3331] design top has unconnected port led17_b
 WARNING: [Synth 8-3331] design top has unconnected port led17_g
 WARNING: [Synth 8-3331] design top has unconnected port led17_r
+WARNING: [Synth 8-3331] design top has unconnected port an[7]
+WARNING: [Synth 8-3331] design top has unconnected port an[6]
+WARNING: [Synth 8-3331] design top has unconnected port an[5]
+WARNING: [Synth 8-3331] design top has unconnected port an[4]
+WARNING: [Synth 8-3331] design top has unconnected port an[3]
+WARNING: [Synth 8-3331] design top has unconnected port an[2]
+WARNING: [Synth 8-3331] design top has unconnected port an[1]
+WARNING: [Synth 8-3331] design top has unconnected port an[0]
+WARNING: [Synth 8-3331] design top has unconnected port ca
+WARNING: [Synth 8-3331] design top has unconnected port cb
+WARNING: [Synth 8-3331] design top has unconnected port cc
+WARNING: [Synth 8-3331] design top has unconnected port cd
+WARNING: [Synth 8-3331] design top has unconnected port ce
+WARNING: [Synth 8-3331] design top has unconnected port cf
+WARNING: [Synth 8-3331] design top has unconnected port cg
 WARNING: [Synth 8-3331] design top has unconnected port sw[15]
 WARNING: [Synth 8-3331] design top has unconnected port sw[14]
 WARNING: [Synth 8-3331] design top has unconnected port sw[13]
@@ -256,16 +416,12 @@ WARNING: [Synth 8-3331] design top has unconnected port sw[3]
 WARNING: [Synth 8-3331] design top has unconnected port sw[2]
 WARNING: [Synth 8-3331] design top has unconnected port sw[1]
 WARNING: [Synth 8-3331] design top has unconnected port sw[0]
+WARNING: [Synth 8-3331] design top has unconnected port btnc
 WARNING: [Synth 8-3331] design top has unconnected port btnu
 WARNING: [Synth 8-3331] design top has unconnected port btnl
 WARNING: [Synth 8-3331] design top has unconnected port btnr
-INFO: [Synth 8-3886] merging instance 'seven_segment_display_0/an_reg[2]' (FDS) to 'seven_segment_display_0/an_reg[3]'
-INFO: [Synth 8-3886] merging instance 'seven_segment_display_0/an_reg[3]' (FDS) to 'seven_segment_display_0/an_reg[5]'
-INFO: [Synth 8-3886] merging instance 'seven_segment_display_0/an_reg[5]' (FDS) to 'seven_segment_display_0/an_reg[6]'
-INFO: [Synth 8-3886] merging instance 'seven_segment_display_0/an_reg[6]' (FDS) to 'seven_segment_display_0/an_reg[7]'
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (\seven_segment_display_0/an_reg[7] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1044.352 ; gain = 403.809
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1066.676 ; gain = 415.770
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -277,13 +433,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1044.352 ; gain = 403.809
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1066.676 ; gain = 415.770
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1044.352 ; gain = 403.809
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1066.676 ; gain = 415.770
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -294,8 +450,15 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_0/we_reg) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_0/ctrl_flow_type_reg[2]) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_0/ctrl_flow_type_reg[1]) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_0/ctrl_flow_type_reg[0]) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_0/data_2_sel_reg[1]) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_0/data_2_sel_reg[0]) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_0/memory_we_reg) is unused and will be removed from module top.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1044.352 ; gain = 403.809
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1066.676 ; gain = 415.770
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -319,13 +482,13 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1050.910 ; gain = 410.367
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1073.723 ; gain = 422.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1050.910 ; gain = 410.367
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1073.723 ; gain = 422.816
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -344,92 +507,97 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1050.910 ; gain = 410.367
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1050.910 ; gain = 410.367
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1050.910 ; gain = 410.367
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1050.910 ; gain = 410.367
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
++------+---------------+----------+
+|      |BlackBox name  |Instances |
++------+---------------+----------+
+|1     |program_memory |         1|
+|2     |data_memory    |         1|
++------+---------------+----------+
 
 Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     1|
-|2     |CARRY4 |    19|
-|3     |LUT1   |     4|
-|4     |LUT2   |     3|
-|5     |LUT3   |     2|
-|6     |LUT4   |    12|
-|7     |LUT5   |     1|
-|8     |LUT6   |    33|
-|9     |FDRE   |    82|
-|10    |FDSE   |    10|
-|11    |LD     |     4|
-|12    |IBUF   |     3|
-|13    |OBUF   |    15|
-|14    |OBUFT  |    22|
-+------+-------+------+
++------+---------------+------+
+|      |Cell           |Count |
++------+---------------+------+
+|1     |data_memory    |     1|
+|2     |program_memory |     1|
+|3     |BUFG           |     2|
+|4     |CARRY4         |    10|
+|5     |LUT1           |     1|
+|6     |LUT2           |    19|
+|7     |LUT3           |    24|
+|8     |LUT4           |    44|
+|9     |LUT5           |    50|
+|10    |LUT6           |   112|
+|11    |FDRE           |   112|
+|12    |FDSE           |     1|
+|13    |IBUF           |     2|
+|14    |OBUF           |    16|
+|15    |OBUFT          |    21|
++------+---------------+------+
 
 Report Instance Areas: 
 +------+------------------------------+------------------------+------+
 |      |Instance                      |Module                  |Cells |
 +------+------------------------------+------------------------+------+
-|1     |top                           |                        |   211|
-|2     |  counter_0                   |counter                 |    12|
-|3     |  counter_1                   |counter_0               |    22|
-|4     |  debouncer_0                 |debouncer               |    56|
-|5     |  seven_segment_display_0     |seven_segment_display   |    53|
-|6     |    binary_to_seven_segment_0 |binary_to_seven_segment |     7|
-|7     |  timer_0                     |timer                   |    27|
+|1     |top                           |                        |   438|
+|2     |  debouncer_0                 |debouncer               |    56|
+|3     |  k0                          |kent_0                  |   341|
+|4     |    central_processing_unit_0 |central_processing_unit |   283|
+|5     |      arithmetic_logic_unit_0 |arithmetic_logic_unit   |     3|
+|6     |      program_counter_0       |program_counter         |    34|
+|7     |      register_file_0         |register_file           |   246|
+|8     |    port_0                    |port                    |     8|
+|9     |    port_1                    |port_0                  |     8|
+|10    |    system_0                  |system                  |    18|
 +------+------------------------------+------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1050.910 ; gain = 410.367
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 42 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:17 . Memory (MB): peak = 1050.910 ; gain = 292.930
-Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1050.910 ; gain = 410.367
+Synthesis finished with 0 errors, 0 critical warnings and 52 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 1073.723 ; gain = 297.012
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1061.180 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 23 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1085.762 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 10 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1064.918 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1086.770 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 4 instances were transformed.
-  LD => LDCE: 4 instances
+No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-30 Infos, 94 Warnings, 0 Critical Warnings and 0 Errors encountered.
+55 Infos, 146 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1064.918 ; gain = 733.703
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1064.918 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1086.770 ; gain = 726.199
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1086.770 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/seanj/Documents/Kent_0/Kent_0.runs/synth_1/top.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Aug 19 18:05:55 2021...
+INFO: [Common 17-206] Exiting Vivado at Sun Oct  3 12:49:46 2021...

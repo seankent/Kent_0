@@ -22,21 +22,35 @@ create_project -in_memory -part xc7a100tcsg324-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/seanj/Documents/Kent_0/Kent_0.cache/wt [current_project]
-set_property parent.project_path C:/Users/seanj/Documents/Kent_0/Kent_0.xpr [current_project]
+set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
+set_property webtalk.parent_dir C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.cache/wt [current_project]
+set_property parent.project_path C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.xpr [current_project]
+set_property XPM_LIBRARIES XPM_MEMORY [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
-set_property ip_output_repo c:/Users/seanj/Documents/Kent_0/Kent_0.cache/ip [current_project]
+set_property ip_output_repo c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
+add_files C:/Users/seanj/Documents/Kent_0/assembler/t_0.coe
 read_verilog -library xil_defaultlib -sv {
-  C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/binary_to_seven_segment.sv
-  C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/debouncer.sv
-  C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/edge_detector.sv
-  C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/seven_segment_display.sv
-  C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/timer.sv
-  C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/sources_1/new/top.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/arithmetic_logic_unit.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/debouncer.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/mux_4_to_1.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/program_counter.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/register_file.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv
 }
+read_ip -quiet C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/data_memory/data_memory.xci
+set_property used_in_implementation false [get_files -all c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/data_memory/data_memory_ooc.xdc]
+
+read_ip -quiet C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/program_memory/program_memory.xci
+set_property used_in_implementation false [get_files -all c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/program_memory/program_memory_ooc.xdc]
+
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
 # design are intentionally left as such for best results. Dcp files will be
@@ -45,9 +59,11 @@ read_verilog -library xil_defaultlib -sv {
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc
-set_property used_in_implementation false [get_files C:/Users/seanj/Documents/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc]
+read_xdc C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc
+set_property used_in_implementation false [get_files C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

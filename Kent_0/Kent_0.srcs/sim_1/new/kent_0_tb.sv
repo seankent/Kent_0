@@ -14,7 +14,9 @@ module kent_0_tb;
     kent_0 dut
     (
         .clk(clk),
-        .rst(rst)
+        .rst(rst),
+        .port_0_data(port_0_data),
+        .port_1_data(port_1_data)
     );
 
     //==============================
@@ -22,6 +24,8 @@ module kent_0_tb;
     //==============================
     logic clk;
     logic rst;
+    logic [7:0] port_0_data;
+    logic [7:0] port_1_data;
     
     //==============================
     // clock

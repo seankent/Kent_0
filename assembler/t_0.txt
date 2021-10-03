@@ -1,2 +1,5 @@
+load r1, 0xaa
+load r2, 0xfe
+store r1, r2
 loop:
 jump r0, loop
