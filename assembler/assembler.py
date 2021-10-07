@@ -15,7 +15,7 @@ class Assembler:
 		# registers
 		self.registers = set(['r0', 'r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7'])
 		# instruction set
-		self.instruction_set = set(['load', 'store', 'jump', 'beq', 'bne', 'blt', 'ble', 'add', 'sub'])
+		self.instruction_set = set(['load', 'store', 'jump', 'beq', 'bne', 'blt', 'ble', 'add', 'sub', 'and', 'or', 'xor', 'shl', 'shr'])
 		# source code
 		self.src = open(file_in).read()
 		# tokens
@@ -45,9 +45,14 @@ class Assembler:
 		self.BRANCH__BLE = 0x3
 		self.FUNC__ADD = 0x0
 		self.FUNC__SUB = 0x1
+		self.FUNC__AND = 0x2
+		self.FUNC__OR = 0x3
+		self.FUNC__XOR = 0x4
+		self.FUNC__SHL = 0x5
+		self.FUNC__SHR = 0x6
 
 		# list of functions
-		self.func = {'add': self.FUNC__ADD, 'sub': self.FUNC__SUB}
+		self.func = {'add': self.FUNC__ADD, 'sub': self.FUNC__SUB, 'and': self.FUNC__AND, 'or': self.FUNC__OR, 'xor': self.FUNC__XOR, 'shl': self.FUNC__SHL, 'shr': self.FUNC__SHR}
 		self.branch = {'beq': self.BRANCH__BEQ, 'bne': self.BRANCH__BNE, 'blt': self.BRANCH__BLT, 'ble': self.BRANCH__BLE}
 
 
@@ -207,7 +212,7 @@ class Assembler:
 				imm = self.labels[temp] - n
 
 		# check if format matches the instruction
-		if op not in self.func:
+		if op not in self.branch:
 			print(f'[ERROR] Instruction is not supported in this format')
 
 		# check if valid register values were given

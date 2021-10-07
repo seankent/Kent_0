@@ -15,7 +15,7 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 12948 
+INFO: Helper process launched with PID 18656 
 WARNING: [Synth 8-2611] redeclaration of ansi port pc is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:19]
 WARNING: [Synth 8-2611] redeclaration of ansi port data_0 is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:24]
 WARNING: [Synth 8-2611] redeclaration of ansi port data_1 is not allowed [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:24]
@@ -49,7 +49,7 @@ WARNING: [Synth 8-976] port_1_we has already been declared [C:/Users/seanj/Docum
 WARNING: [Synth 8-2654] second declaration of port_1_we ignored [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:36]
 INFO: [Synth 8-994] port_1_we is declared here [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv:14]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 890.273 ; gain = 239.367
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 890.289 ; gain = 239.152
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv:4]
 INFO: [Synth 8-6157] synthesizing module 'kent_0' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv:4]
@@ -112,10 +112,10 @@ INFO: [Synth 8-6155] done synthesizing module 'register_file' (5#1) [C:/Users/se
 INFO: [Synth 8-6157] synthesizing module 'arithmetic_logic_unit' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/arithmetic_logic_unit.sv:4]
 INFO: [Synth 8-6155] done synthesizing module 'arithmetic_logic_unit' (6#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/arithmetic_logic_unit.sv:4]
 INFO: [Synth 8-6155] done synthesizing module 'central_processing_unit' (7#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv:4]
-INFO: [Synth 8-6157] synthesizing module 'program_memory' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6528-DESKTOP-18I9AUK/realtime/program_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'program_memory' (8#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6528-DESKTOP-18I9AUK/realtime/program_memory_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'data_memory' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6528-DESKTOP-18I9AUK/realtime/data_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'data_memory' (9#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6528-DESKTOP-18I9AUK/realtime/data_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'program_memory' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6716-DESKTOP-18I9AUK/realtime/program_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'program_memory' (8#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6716-DESKTOP-18I9AUK/realtime/program_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'data_memory' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6716-DESKTOP-18I9AUK/realtime/data_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'data_memory' (9#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/.Xil/Vivado-6716-DESKTOP-18I9AUK/realtime/data_memory_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'port' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv:4]
 INFO: [Synth 8-6155] done synthesizing module 'port' (10#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv:4]
 INFO: [Synth 8-6155] done synthesizing module 'kent_0' (11#1) [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv:4]
@@ -186,7 +186,7 @@ WARNING: [Synth 8-3331] design top has unconnected port btnu
 WARNING: [Synth 8-3331] design top has unconnected port btnl
 WARNING: [Synth 8-3331] design top has unconnected port btnr
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 940.871 ; gain = 289.965
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 940.180 ; gain = 289.043
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -199,12 +199,12 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 940.871 ; gain = 289.965
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 940.180 ; gain = 289.043
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 940.871 ; gain = 289.965
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 940.180 ; gain = 289.043
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 940.871 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 940.180 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -221,22 +221,22 @@ Parsing XDC File [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/don
 Finished Parsing XDC File [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1058.875 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1056.441 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1058.875 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1056.441 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'k0/data_memory_0' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'k0/program_memory_0' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.676 ; gain = 415.770
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1065.227 ; gain = 414.090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.676 ; gain = 415.770
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1065.227 ; gain = 414.090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -244,7 +244,7 @@ Start Applying 'set_property' XDC Constraints
 Applied set_property DONT_TOUCH = true for k0/data_memory_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for k0/program_memory_0. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.676 ; gain = 415.770
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1065.227 ; gain = 414.090
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'system'
 INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/arithmetic_logic_unit.sv:30]
@@ -264,7 +264,7 @@ WARNING: [Synth 8-327] inferring latch for variable 'ctrl_flow_type_reg' [C:/Use
 WARNING: [Synth 8-327] inferring latch for variable 'data_2_sel_reg' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:84]
 WARNING: [Synth 8-327] inferring latch for variable 'memory_we_reg' [C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv:86]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1066.676 ; gain = 415.770
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1065.227 ; gain = 414.090
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -421,7 +421,7 @@ WARNING: [Synth 8-3331] design top has unconnected port btnu
 WARNING: [Synth 8-3331] design top has unconnected port btnl
 WARNING: [Synth 8-3331] design top has unconnected port btnr
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1066.676 ; gain = 415.770
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1065.227 ; gain = 414.090
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -433,13 +433,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1066.676 ; gain = 415.770
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1065.227 ; gain = 414.090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1066.676 ; gain = 415.770
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1065.227 ; gain = 414.090
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -458,7 +458,7 @@ WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_
 WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_0/data_2_sel_reg[0]) is unused and will be removed from module top.
 WARNING: [Synth 8-3332] Sequential element (k0/central_processing_unit_0/decode_0/memory_we_reg) is unused and will be removed from module top.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1066.676 ; gain = 415.770
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1065.227 ; gain = 414.090
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -482,13 +482,13 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1073.723 ; gain = 422.816
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1072.496 ; gain = 421.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1073.723 ; gain = 422.816
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1072.496 ; gain = 421.359
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -507,25 +507,25 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1072.496 ; gain = 421.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1072.496 ; gain = 421.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1072.496 ; gain = 421.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1072.496 ; gain = 421.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -576,28 +576,28 @@ Report Instance Areas:
 |10    |    system_0                  |system                  |    18|
 +------+------------------------------+------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1072.496 ; gain = 421.359
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 52 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 1073.723 ; gain = 297.012
-Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1073.723 ; gain = 422.816
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1072.496 ; gain = 296.312
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1072.496 ; gain = 421.359
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1085.762 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1072.496 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 10 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1086.770 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1072.496 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
 55 Infos, 146 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1086.770 ; gain = 726.199
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1086.770 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1072.496 ; gain = 711.766
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1072.496 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Oct  3 12:49:46 2021...
+INFO: [Common 17-206] Exiting Vivado at Sun Oct  3 19:06:01 2021...
