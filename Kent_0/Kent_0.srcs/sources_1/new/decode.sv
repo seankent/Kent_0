@@ -14,7 +14,7 @@ module decode
     output logic we,
     output logic [2:0] ctrl_flow_type,
     output logic [1:0] data_2_sel,
-    output logic memory_we
+    output logic data_memory_we
 );
     
     //==============================
@@ -83,28 +83,28 @@ module decode
                     we = 1'b1;
                     data_2_sel = DATA_2_SEL__ALU;
                     ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
-                    memory_we = 1'b0;
+                    data_memory_we = 1'b0;
                 end
             INSTR_TYPE__LOAD: 
                 begin
                     we = 1'b1;
                     data_2_sel = op_ext_0[1] ? DATA_2_SEL__MEM : DATA_2_SEL__IMM;
                     ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
-                    memory_we = 1'b0;
+                    data_memory_we = 1'b0;
                 end
             INSTR_TYPE__STORE: 
                 begin
                     we = 1'b0;
                     data_2_sel = DATA_2_SEL__ALU;
                     ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
-                    memory_we = 1'b1;
+                    data_memory_we = 1'b1;
                 end
             INSTR_TYPE__JUMP: 
                 begin
                     we = 1'b1;
                     data_2_sel = DATA_2_SEL__PC_PLUS_ONE;
                     ctrl_flow_type = op_ext_0[1] ? CTRL_FLOW_TYPE__INDIRECT_JUMP : CTRL_FLOW_TYPE__RELATIVE_JUMP;
-                    memory_we = 1'b0;
+                    data_memory_we = 1'b0;
                 end
             INSTR_TYPE__BRANCH: 
                 begin
@@ -116,7 +116,7 @@ module decode
                         2'h2: ctrl_flow_type = CTRL_FLOW_TYPE__BLT;
                         2'h3: ctrl_flow_type = CTRL_FLOW_TYPE__BLE;
                     endcase
-                    memory_we = 1'b0;
+                    data_memory_we = 1'b0;
                 end
         endcase
     end

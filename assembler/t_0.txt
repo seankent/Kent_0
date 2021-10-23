@@ -1,10 +1,11 @@
-// ((((2*256) + 3)*256 + 3)*x + 4)*1/100e6*6 = 1 Hz -> x = 126
+// (((((2*256) + 3)*256 + 3)*256 + 3)*x + 6)*1/100e6 = 1 Hz -> x = 3
 load r7, 0x01
 load r6, 0xfe
-load r5, 0xff
-load r4, 0xaa
+load r5, 0xaa
 loop:
-load r3, 126 // x = 126
+load r4, 0x03
+l4:
+load r3, 0x00
 l3:
 load r2, 0x00
 l2:
@@ -16,6 +17,10 @@ sub r2, r2, r7
 bne r0, r2, l2
 sub r3, r3, r7
 bne r0, r3, l3
-xor r4, r4, r5
-store r4, r6
+sub r4, r4, r7
+bne r0, r4, l4
+load r6, 0xff
+xor r5, r5, r6
+load r6, 0xfe
+store r5, r6
 jump r0, loop

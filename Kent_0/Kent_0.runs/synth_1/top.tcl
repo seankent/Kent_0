@@ -17,8 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 5
-set_param xicom.use_bs_reader 1
 set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -41,6 +39,7 @@ read_verilog -library xil_defaultlib -sv {
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/debouncer.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/memory.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/mux_4_to_1.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/program_counter.sv
@@ -48,11 +47,8 @@ read_verilog -library xil_defaultlib -sv {
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv
 }
-read_ip -quiet C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/data_memory/data_memory.xci
-set_property used_in_implementation false [get_files -all c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/data_memory/data_memory_ooc.xdc]
-
-read_ip -quiet C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/program_memory/program_memory.xci
-set_property used_in_implementation false [get_files -all c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/program_memory/program_memory_ooc.xdc]
+read_ip -quiet c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/rom/rom.xci
+set_property used_in_implementation false [get_files -all c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/rom/rom_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -65,8 +61,6 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc
 set_property used_in_implementation false [get_files C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc]
 
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

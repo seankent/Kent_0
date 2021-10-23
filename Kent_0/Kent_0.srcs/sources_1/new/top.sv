@@ -45,7 +45,7 @@ module top
     kent_0 k0
     (
         .clk(clk),
-        .rst(rst),
+        .ext_rst(rst),
         .port_0_data(port_0_data),
         .port_1_data(port_1_data)
     );

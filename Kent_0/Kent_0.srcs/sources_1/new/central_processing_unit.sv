@@ -7,10 +7,10 @@ module central_processing_unit
     input logic rst,
     input logic [15:0] ir,
     output pc,
-    output [7:0] data_0,
-    output [7:0] data_1,
-    input logic [7:0] data_memory_data_2,
-    output memory_we
+    output [7:0] data_memory_addr,
+    output [7:0] data_memory_data_wr,
+    input [7:0] data_memory_data_rd,
+    output data_memory_we
 );
 
     //==============================
@@ -22,7 +22,7 @@ module central_processing_unit
     //logic [15:0] ir; // instruction register
     logic [2:0] addr_0, addr_1, addr_2;
     logic [7:0] data_0, data_1, data_2;
-    logic [7:0] arithmetic_logic_unit_0_data_2;
+    logic [7:0] arithmetic_logic_unit_data_2;
     logic [2:0] func; // alu function selection 
     logic [7:0] imm; // 8-bit immediate 
     logic we; // write enable (for register file)
@@ -30,7 +30,18 @@ module central_processing_unit
     logic [2:0] ctrl_flow_type;
     logic [1:0] data_2_sel;
     logic eq, ne, lt, le;
-    logic memory_we;
+    
+    // data memory interface
+    logic [7:0] data_memory_addr;
+    logic [7:0] data_memory_data_wr;
+    logic [7:0] data_memory_data_rd;
+    logic data_memory_we;
+    
+    //==============================
+    // logic
+    //==============================
+    assign data_memory_addr = data_0;
+    assign data_memory_data_wr = data_1;
     
     //==============================
     // program_counter_0
@@ -67,7 +78,7 @@ module central_processing_unit
         .we(we),
         .ctrl_flow_type(ctrl_flow_type),
         .data_2_sel(data_2_sel),
-        .memory_we(memory_we)
+        .data_memory_we(data_memory_we)
     );
     
     //==============================
@@ -78,9 +89,9 @@ module central_processing_unit
         .clk(clk),
         .rst(rst),
         .sel(data_2_sel),
-        .in_0(arithmetic_logic_unit_0_data_2),
+        .in_0(arithmetic_logic_unit_data_2),
         .in_1(imm),
-        .in_2(data_memory_data_2),
+        .in_2(data_memory_data_rd),
         .in_3(pc_plus_one),
         .out(data_2)
     );
@@ -111,7 +122,7 @@ module central_processing_unit
         .func(func),
         .data_0(data_0),
         .data_1(data_1),
-        .data_2(arithmetic_logic_unit_0_data_2),
+        .data_2(arithmetic_logic_unit_data_2),
         .eq(eq),
         .ne(ne),
         .lt(lt),

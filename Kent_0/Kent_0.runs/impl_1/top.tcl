@@ -67,7 +67,6 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 5
-  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a100tcsg324-1
   set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
   set_property design_mode GateLvl [current_fileset]
@@ -78,8 +77,7 @@ set rc [catch {
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_MEMORY [current_project]
   add_files -quiet C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.runs/synth_1/top.dcp
-  read_ip -quiet C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/data_memory/data_memory.xci
-  read_ip -quiet C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/program_memory/program_memory.xci
+  read_ip -quiet c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/rom/rom.xci
   read_xdc C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/constrs_1/new/nexys4_ddr.xdc
   link_design -top top -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb

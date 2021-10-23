@@ -14,7 +14,7 @@ module kent_0_tb;
     kent_0 dut
     (
         .clk(clk),
-        .rst(rst),
+        .ext_rst(ext_rst),
         .port_0_data(port_0_data),
         .port_1_data(port_1_data)
     );
@@ -23,7 +23,7 @@ module kent_0_tb;
     // logic
     //==============================
     logic clk;
-    logic rst;
+    logic ext_rst;
     logic [7:0] port_0_data;
     logic [7:0] port_1_data;
     
@@ -39,15 +39,15 @@ module kent_0_tb;
     //==============================
     initial begin
         clk = 0;
-        rst = 0;
+        ext_rst = 0;
         
         #10;
         
-        rst = 1;
+        ext_rst = 1;
         
         #10;
         
-        rst = 0;
+        ext_rst = 0;
         
         #100;
 

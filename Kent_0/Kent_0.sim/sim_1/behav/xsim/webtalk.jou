@@ -2,8 +2,8 @@
 # Webtalk v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Sat Oct  2 19:45:06 2021
-# Process ID: 20368
+# Start of session at: Sat Oct 23 14:10:30 2021
+# Process ID: 15192
 # Current directory: C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.sim/sim_1/behav/xsim/xsim.dir/kent_0_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.sim/sim_1/behav/xsim/webtalk.log
