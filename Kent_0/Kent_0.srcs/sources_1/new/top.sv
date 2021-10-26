@@ -28,16 +28,18 @@ module top
     logic clk;
     logic rst;
     logic btnd_clean;
-    logic [7:0] port_0_data;
-    logic [7:0] port_1_data;
+    logic [7:0] port_0;
+    logic [7:0] port_1;
+    logic [7:0] port_2;
+    logic [7:0] port_3;
         
     //==============================
     // assign
     //==============================
     assign clk = clk_100mhz;
     assign rst = btnd_clean;
-    assign led[7:0] = port_0_data;
-    assign led[15:8] = port_1_data;
+    assign led[7:0] = port_0;
+    assign led[15:8] = port_1;
 
     //==============================
     // k0
@@ -46,8 +48,10 @@ module top
     (
         .clk(clk),
         .ext_rst(rst),
-        .port_0_data(port_0_data),
-        .port_1_data(port_1_data)
+        .port_0(port_0),
+        .port_1(port_1),
+        .port_2(port_2),
+        .port_3(port_3)
     );
     
     //==============================

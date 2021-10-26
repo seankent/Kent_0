@@ -10,7 +10,10 @@ module central_processing_unit
     output [7:0] data_memory_addr,
     output [7:0] data_memory_data_wr,
     input [7:0] data_memory_data_rd,
-    output data_memory_we
+    output data_memory_we,
+    input [7:0] ie,
+    input intr_0,
+    input intr_1
 );
 
     //==============================
@@ -38,7 +41,7 @@ module central_processing_unit
     logic data_memory_we;
     
     //==============================
-    // logic
+    // assign
     //==============================
     assign data_memory_addr = data_0;
     assign data_memory_data_wr = data_1;
@@ -59,7 +62,10 @@ module central_processing_unit
         .data_0(data_0),
         .pc(pc),
         .pc_plus_one(pc_plus_one),
-        .pc_plus_imm(pc_plus_imm)
+        .pc_plus_imm(pc_plus_imm),
+        .ie(ie),
+        .intr_0(intr_0),
+        .intr_1(intr_1)
     );
     
     //==============================

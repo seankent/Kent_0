@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Sat Oct 23 18:22:56 2021
+| Date         : Sun Oct 24 22:18:26 2021
 | Host         : DESKTOP-18I9AUK running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    15 |
-|    Minimum number of control sets                        |    15 |
+| Total control sets                                       |   268 |
+|    Minimum number of control sets                        |   268 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
 | Unused register locations in slices containing registers |     7 |
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    15 |
+| Total control sets |   268 |
 | >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |    11 |
+| >= 8 to < 10       |   263 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     3 |
+| >= 16              |     4 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,36 +58,289 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               5 |            3 |
+| No           | No                    | No                     |               5 |            2 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              20 |            6 |
-| Yes          | No                    | No                     |              56 |           38 |
+| No           | Yes                   | No                     |              28 |           12 |
+| Yes          | No                    | No                     |            2064 |          555 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              32 |           16 |
+| Yes          | Yes                   | No                     |              64 |           19 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+-----------------------+---------------------------------------------+-------------------------------+------------------+----------------+
-|      Clock Signal     |                Enable Signal                |        Set/Reset Signal       | Slice Load Count | Bel Load Count |
-+-----------------------+---------------------------------------------+-------------------------------+------------------+----------------+
-|  clk_100mhz_IBUF_BUFG |                                             |                               |                3 |              5 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/data[7]_i_2__0[0]         | k0/system_0/SR[0]             |                3 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/E[0]                      | k0/system_0/SR[0]             |                3 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/memory_reg_0_255_4_4_0[0] |                               |                6 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/memory_reg_0_255_3_3_0[0] |                               |                8 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/memory_reg_0_255_3_3_2[0] |                               |                3 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/memory_reg_0_255_2_2_0[0] |                               |                4 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/pc[7]_i_6_0[0]            | k0/system_0/SR[0]             |                6 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/memory_reg_0_255_2_2_1[0] |                               |                6 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/memory_reg_0_255_3_3_3[0] |                               |                6 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/memory_reg_0_255_3_3_1[0] |                               |                5 |              8 |
-|  clk_100mhz_IBUF_BUFG | k0/system_0/E[0]                            | k0/system_0/rom_addr0         |                4 |              8 |
-|  clk_100mhz_IBUF_BUFG |                                             | debouncer_0/count[19]_i_1_n_0 |                6 |             20 |
-|  clk_100mhz_IBUF_BUFG | k0/program_memory/memory_reg_0_255_0_0_0    |                               |                8 |             32 |
-|  clk_100mhz_IBUF_BUFG | k0/system_0/E[0]                            |                               |               16 |             64 |
-+-----------------------+---------------------------------------------+-------------------------------+------------------+----------------+
++-----------------------+---------------------------------------------------------------------------------+-------------------------------+------------------+----------------+
+|      Clock Signal     |                                  Enable Signal                                  |        Set/Reset Signal       | Slice Load Count | Bel Load Count |
++-----------------------+---------------------------------------------------------------------------------+-------------------------------+------------------+----------------+
+|  clk_100mhz_IBUF_BUFG |                                                                                 |                               |                2 |              5 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/memory[255][7]_i_8_0[0]            | k0/system_0/SR[0]             |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG |                                                                                 | k0/system_0/SR[0]             |                6 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/instruction_memory_0/memory_reg_0_255_1_1_3[0]                               |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/instruction_memory_0/memory_reg_0_255_1_1_1[0]                               |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/instruction_memory_0/memory_reg_0_255_1_1_2[0]                               |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/instruction_memory_0/memory_reg_0_255_3_3_1[0]                               |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/instruction_memory_0/memory_reg_0_255_4_4_0[0]                               |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/instruction_memory_0/memory_reg_0_255_3_3_2[0]                               |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/instruction_memory_0/memory_reg_0_255_3_3_0[0]                               |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/memory_reg[254][7]_i_6_2[0]        | k0/system_0/SR[0]             |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/system_0/E[0]                                                                | k0/system_0/rom_addr0         |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_111[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_109[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_112[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_1[0]   |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_113[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_114[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_115[0] |                               |                5 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_116[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_0[0]   |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_102[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_103[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/E[0]                               |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_10[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_100[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_101[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_104[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_105[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2][0]     |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_106[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_107[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_108[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_11[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_110[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_14[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_121[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_127[0] |                               |                5 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_118[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_120[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_146[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_151[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_152[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_155[0] |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_157[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_134[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_164[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_165[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_117[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_166[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_142[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_167[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_148[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_161[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_124[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_163[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_129[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_168[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_169[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_17[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_125[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_160[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_135[0] |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_150[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_128[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_143[0] |                               |                7 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_170[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_13[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_159[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_154[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_12[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_171[0] |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_139[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_158[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_172[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_132[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_147[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_173[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_131[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_122[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_140[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_174[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_16[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_144[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_145[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_141[0] |                               |                5 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_15[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_126[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_156[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_162[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_130[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_137[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_133[0] |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_149[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_153[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_123[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_119[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_136[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_138[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_185[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_191[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_196[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_198[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_204[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_21[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_211[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_213[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_215[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_206[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_216[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_218[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_2[0]   |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_210[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_195[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_217[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_22[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_208[0] |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_221[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_178[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_182[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_199[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_220[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_18[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_201[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_223[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_176[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_19[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_224[0] |                               |                5 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_177[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_225[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_226[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_203[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_228[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_202[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_209[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_23[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_180[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_192[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_214[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_186[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_207[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_229[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_230[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_187[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_231[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_197[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_20[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_181[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_183[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_205[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_189[0] |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_219[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_222[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_227[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_188[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_194[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_200[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_179[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_190[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_193[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_212[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_175[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_184[0] |                               |                5 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_26[0]  |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_243[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_238[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_3[0]   |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_41[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_45[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_47[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_54[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_56[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_6[0]   |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_233[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_37[0]  |                               |                5 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_39[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_27[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_28[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_30[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_248[0] |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_42[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_60[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_31[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_241[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_245[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_36[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_51[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_58[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_237[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_46[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_4[0]   |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_32[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_244[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_55[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_59[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_61[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_235[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_246[0] |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_232[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_25[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_43[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_34[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_239[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_48[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_57[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_62[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_240[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_247[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_35[0]  |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_53[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_236[0] |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_63[0]  |                               |                5 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_234[0] |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_64[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_65[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_242[0] |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_33[0]  |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_66[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_5[0]   |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_52[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_38[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_24[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_49[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_50[0]  |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_44[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_29[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_40[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_99[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_90[0]  |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_91[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_79[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_76[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_70[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_87[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_92[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_81[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_75[0]  |                               |                6 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_83[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_93[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_97[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_85[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_69[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_71[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_8[0]   |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_67[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_73[0]  |                               |                5 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_95[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_7[0]   |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_74[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_80[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_96[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_98[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_86[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_77[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_72[0]  |                               |                4 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_89[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_82[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_9[0]   |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_68[0]  |                               |                1 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_88[0]  |                               |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_94[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_84[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/FSM_sequential_state_reg[2]_78[0]  |                               |                2 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/memory_reg[255][7]_i_7_0[0]        | k0/system_0/SR[0]             |                3 |              8 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/memory_reg[254][7]_i_6_1[0]        | k0/system_0/SR[0]             |                5 |             16 |
+|  clk_100mhz_IBUF_BUFG | k0/central_processing_unit_0/register_file_0/memory_reg[254][7]_i_6_0[0]        | k0/system_0/SR[0]             |                4 |             16 |
+|  clk_100mhz_IBUF_BUFG |                                                                                 | debouncer_0/count[19]_i_1_n_0 |                6 |             20 |
+|  clk_100mhz_IBUF_BUFG | k0/system_0/E[0]                                                                |                               |               16 |             64 |
++-----------------------+---------------------------------------------------------------------------------+-------------------------------+------------------+----------------+
 
 

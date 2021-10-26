@@ -1,6 +1,5 @@
 // (((((2*256) + 3)*256 + 3)*256 + 3)*x + 6)*1/100e6 = 1 Hz -> x = 3
 load r7, 0x01
-load r6, 0xfe
 load r5, 0xaa
 loop:
 load r4, 0x03
@@ -21,6 +20,6 @@ sub r4, r4, r7
 bne r0, r4, l4
 load r6, 0xff
 xor r5, r5, r6
-load r6, 0xfe
+load r6, 0xfc
 store r5, r6
 jump r0, loop

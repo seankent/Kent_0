@@ -77,49 +77,101 @@ module decode
     // always_comb
     //==============================
     always_comb begin
+        we = 1'b0;
         case (instr_type)
-            INSTR_TYPE__FUNC: 
+            INSTR_TYPE__FUNC: we = 1'b1;
+            INSTR_TYPE__LOAD: we = 1'b1;
+            INSTR_TYPE__JUMP: we = 1'b1;
+        endcase
+    end
+    
+    //==============================
+    // always_comb
+    //==============================
+    always_comb begin
+        data_2_sel = DATA_2_SEL__ALU;
+        case (instr_type)
+            INSTR_TYPE__LOAD: data_2_sel = op_ext_0[1] ? DATA_2_SEL__MEM : DATA_2_SEL__IMM;
+            INSTR_TYPE__JUMP: data_2_sel = DATA_2_SEL__PC_PLUS_ONE;
+        endcase
+    end
+    
+    //==============================
+    // always_comb
+    //==============================
+    always_comb begin
+        data_memory_we = 1'b0;
+        case (instr_type)
+            INSTR_TYPE__STORE: data_memory_we = 1'b1;
+        endcase
+    end
+    
+    //==============================
+    // always_comb
+    //==============================
+    always_comb begin
+        ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
+        case (instr_type)
+            INSTR_TYPE__JUMP: ctrl_flow_type = op_ext_0[1] ? CTRL_FLOW_TYPE__INDIRECT_JUMP : CTRL_FLOW_TYPE__RELATIVE_JUMP;
+            INSTR_TYPE__BRANCH:
                 begin
-                    we = 1'b1;
-                    data_2_sel = DATA_2_SEL__ALU;
-                    ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
-                    data_memory_we = 1'b0;
-                end
-            INSTR_TYPE__LOAD: 
-                begin
-                    we = 1'b1;
-                    data_2_sel = op_ext_0[1] ? DATA_2_SEL__MEM : DATA_2_SEL__IMM;
-                    ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
-                    data_memory_we = 1'b0;
-                end
-            INSTR_TYPE__STORE: 
-                begin
-                    we = 1'b0;
-                    data_2_sel = DATA_2_SEL__ALU;
-                    ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
-                    data_memory_we = 1'b1;
-                end
-            INSTR_TYPE__JUMP: 
-                begin
-                    we = 1'b1;
-                    data_2_sel = DATA_2_SEL__PC_PLUS_ONE;
-                    ctrl_flow_type = op_ext_0[1] ? CTRL_FLOW_TYPE__INDIRECT_JUMP : CTRL_FLOW_TYPE__RELATIVE_JUMP;
-                    data_memory_we = 1'b0;
-                end
-            INSTR_TYPE__BRANCH: 
-                begin
-                    we = 1'b0;
-                    data_2_sel = DATA_2_SEL__ALU;
                     case (op_ext_1[1:0])
                         2'h0: ctrl_flow_type = CTRL_FLOW_TYPE__BEQ;
                         2'h1: ctrl_flow_type = CTRL_FLOW_TYPE__BNE;
                         2'h2: ctrl_flow_type = CTRL_FLOW_TYPE__BLT;
                         2'h3: ctrl_flow_type = CTRL_FLOW_TYPE__BLE;
                     endcase
-                    data_memory_we = 1'b0;
                 end
         endcase
     end
+    
+//    //==============================
+//    // always_comb
+//    //==============================
+//    always_comb begin
+//        case (instr_type)
+//            INSTR_TYPE__FUNC: 
+//                begin
+//                    we = 1'b1;
+//                    data_2_sel = DATA_2_SEL__ALU;
+//                    ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
+//                    data_memory_we = 1'b0;
+//                end
+//            INSTR_TYPE__LOAD: 
+//                begin
+//                    we = 1'b1;
+//                    data_2_sel = op_ext_0[1] ? DATA_2_SEL__MEM : DATA_2_SEL__IMM;
+//                    ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
+//                    data_memory_we = 1'b0;
+//                end
+//            INSTR_TYPE__STORE: 
+//                begin
+//                    we = 1'b0;
+//                    data_2_sel = DATA_2_SEL__ALU;
+//                    ctrl_flow_type = CTRL_FLOW_TYPE__PC_PLUS_ONE;
+//                    data_memory_we = 1'b1;
+//                end
+//            INSTR_TYPE__JUMP: 
+//                begin
+//                    we = 1'b1;
+//                    data_2_sel = DATA_2_SEL__PC_PLUS_ONE;
+//                    ctrl_flow_type = op_ext_0[1] ? CTRL_FLOW_TYPE__INDIRECT_JUMP : CTRL_FLOW_TYPE__RELATIVE_JUMP;
+//                    data_memory_we = 1'b0;
+//                end
+//            INSTR_TYPE__BRANCH: 
+//                begin
+//                    we = 1'b0;
+//                    data_2_sel = DATA_2_SEL__ALU;
+//                    case (op_ext_1[1:0])
+//                        2'h0: ctrl_flow_type = CTRL_FLOW_TYPE__BEQ;
+//                        2'h1: ctrl_flow_type = CTRL_FLOW_TYPE__BNE;
+//                        2'h2: ctrl_flow_type = CTRL_FLOW_TYPE__BLT;
+//                        2'h3: ctrl_flow_type = CTRL_FLOW_TYPE__BLE;
+//                    endcase
+//                    data_memory_we = 1'b0;
+//                end
+//        endcase
+//    end
 
     
     //==============================

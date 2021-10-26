@@ -17,7 +17,8 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_msg_config -id {Common 17-41} -limit 10000000
+set_param chipscope.maxJobs 5
+set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -36,18 +37,18 @@ add_files C:/Users/seanj/Documents/Kent_0/assembler/t_0.coe
 read_verilog -library xil_defaultlib -sv {
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/arithmetic_logic_unit.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/central_processing_unit.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/data_memory.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/debouncer.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/decode.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/instruction_memory.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/kent_0.sv
-  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/memory.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/mux_4_to_1.sv
-  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/port.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/program_counter.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/register_file.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv
 }
-read_ip -quiet c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/rom/rom.xci
+read_ip -quiet C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/rom/rom.xci
 set_property used_in_implementation false [get_files -all c:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/rom/rom_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being

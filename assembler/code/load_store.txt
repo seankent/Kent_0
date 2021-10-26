@@ -1,5 +1,5 @@
 load r1, 0x01
-load r2, 0xfe
+load r2, 0xfc
 load r3, 0xaa
 loop:
 store r3, r2
