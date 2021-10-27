@@ -1,0 +1,21 @@
+load r1, 0xf6
+load r2, 0x10
+store r2, r1
+load r1, 0xf7
+store r0, r1
+load r1, 0xfb
+load r2, 0x03
+store r2, r1
+load r1, 0xfa
+load r2, 0x01
+store r2, r1
+loop:
+jump r0, loop
+
+tmr0_isr:
+load r7, 0xff
+store r0, r7
+reti
+
+.0xfe
+jump r0, tmr0_isr

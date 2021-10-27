@@ -5,14 +5,14 @@ module timer
 (
     input logic clk,
     input logic rst,
-    input logic [15:0] N,   // for a period of x clock cycles, set N = x - 1
+    input logic [31:0] N,   // for a period of x clock cycles, set N = x - 1
     output logic ov
 );
     
     //==============================
     // logic
     //==============================
-    logic [15:0] n;
+    logic [31:0] n;
     
     //==============================
     // always_ff
@@ -25,8 +25,8 @@ module timer
     // always_ff
     //==============================
     always_ff @(posedge clk) begin
-        if (rst) n <= 16'h0000;
-        else n <= (n == N) ? 16'b0000 : n + 1;
+        if (rst) n <= 31'h00_00_00_00;
+        else n <= (n == N) ? 31'b00_00_00_00 : n + 1;
     end
 
 endmodule

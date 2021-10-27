@@ -1,0 +1,76 @@
+//==============================
+// main
+//==============================
+main:
+	load r1, 0x08
+	load r2, 0x00
+	load r3, 0x00
+	load r4, 0x00
+	jump r7, load_timer_0
+	jump r7, enable_interupt_0
+	jump r7, enable_timer_0
+loop:
+	jump r0, loop
+
+//==============================
+// load_timer_0
+//==============================
+load_timer_0:
+	load r5, 0x01
+	load r6, 0xf2
+	store r1, r6
+	add r6, r6, r5
+	store r2, r6
+	add r6, r6, r5
+	store r3, r6
+	add r6, r6, r5
+	store r4, r6
+	jump r0, r7
+
+//==============================
+// enable_timer_0
+//==============================
+enable_timer_0:
+	load r1, 0xfa
+	load r2, r1
+	load r3, 0x01
+	or r2, r2, r3
+	store r2, r1
+	jump r0, r7
+
+//==============================
+// enable_interupt_0
+//==============================
+enable_interupt_0:
+	load r1, 0xfb
+	load r2, r1
+	load r3, 0x01
+	or r2, r2, r3
+	store r2, r1
+	jump r0, r7
+
+//==============================
+// interupt_0
+//==============================
+interupt_0:
+	load r1, 0x01
+	load r2, 0x80
+	load r3, 0xfc
+	load r4, r3
+	bne r4, r2, l0
+	store r1, r3
+	reti
+l0:
+	bne r4, r0, l1
+	store r1, r3
+	reti
+l1:
+	shl r4, r4, r1
+	store r4, r3
+	reti
+
+//==============================
+// interupt vector
+//==============================
+.0xfe
+jump r0, interupt_0

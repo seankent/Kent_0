@@ -29,6 +29,7 @@ module decode
     parameter INSTR_TYPE__STORE = 3'h2;
     parameter INSTR_TYPE__JUMP = 3'h3;
     parameter INSTR_TYPE__BRANCH = 3'h4;
+    parameter INSTR_TYPE__RETI = 3'h5;
     parameter CTRL_FLOW_TYPE__PC_PLUS_ONE = 3'h0;
     parameter CTRL_FLOW_TYPE__RELATIVE_JUMP = 3'h1;
     parameter CTRL_FLOW_TYPE__INDIRECT_JUMP = 3'h2;
@@ -36,6 +37,7 @@ module decode
     parameter CTRL_FLOW_TYPE__BNE = 3'h4;
     parameter CTRL_FLOW_TYPE__BLT = 3'h5;
     parameter CTRL_FLOW_TYPE__BLE = 3'h6;
+    parameter CTRL_FLOW_TYPE__RETI = 3'h7;
     parameter DATA_2_SEL__ALU = 2'h0;
     parameter DATA_2_SEL__IMM = 2'h1;
     parameter DATA_2_SEL__MEM = 2'h2;
@@ -59,7 +61,7 @@ module decode
     assign addr_1 = ir[7:5];
     assign addr_2 = ir[4:2];
     assign func = ir[13:11];
-    assign imm = (op == F3) ? {ir[4], ir[4], ir[4], ir[15:11]} : ir[15:8];
+    assign imm = (op == F2) ? {ir[4], ir[4], ir[4], ir[15:11]} : ir[15:8];
     
     //==============================
     // always_comb
@@ -68,8 +70,8 @@ module decode
         case (op)
             F0: instr_type = INSTR_TYPE__FUNC;
             F1: instr_type = op_ext_0[0] ? INSTR_TYPE__JUMP : INSTR_TYPE__LOAD;
-            F2: instr_type = INSTR_TYPE__STORE;
-            F3: instr_type = INSTR_TYPE__BRANCH;
+            F2: instr_type = op_ext_1[0] ? INSTR_TYPE__BRANCH : INSTR_TYPE__STORE;
+            F3: instr_type = INSTR_TYPE__RETI;
         endcase
     end
     
@@ -115,13 +117,14 @@ module decode
             INSTR_TYPE__JUMP: ctrl_flow_type = op_ext_0[1] ? CTRL_FLOW_TYPE__INDIRECT_JUMP : CTRL_FLOW_TYPE__RELATIVE_JUMP;
             INSTR_TYPE__BRANCH:
                 begin
-                    case (op_ext_1[1:0])
+                    case (op_ext_1[2:1])
                         2'h0: ctrl_flow_type = CTRL_FLOW_TYPE__BEQ;
                         2'h1: ctrl_flow_type = CTRL_FLOW_TYPE__BNE;
                         2'h2: ctrl_flow_type = CTRL_FLOW_TYPE__BLT;
                         2'h3: ctrl_flow_type = CTRL_FLOW_TYPE__BLE;
                     endcase
                 end
+            INSTR_TYPE__RETI: ctrl_flow_type = CTRL_FLOW_TYPE__RETI;
         endcase
     end
     

@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Sun Oct 24 22:19:24 2021
+| Date             : Wed Oct 27 03:29:48 2021
 | Host             : DESKTOP-18I9AUK running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.136        |
+| Total On-Chip Power (W)  | 0.140        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.039        |
+| Dynamic (W)              | 0.042        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.4         |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.004 |        3 |       --- |             --- |
-| Slice Logic              |     0.008 |     3874 |       --- |             --- |
-|   LUT as Logic           |     0.007 |     1066 |     63400 |            1.68 |
-|   F7/F8 Muxes            |    <0.001 |      485 |     63400 |            0.76 |
+| Slice Logic              |     0.009 |     4053 |       --- |             --- |
+|   LUT as Logic           |     0.008 |     1119 |     63400 |            1.76 |
+|   F7/F8 Muxes            |    <0.001 |      486 |     63400 |            0.77 |
+|   CARRY4                 |    <0.001 |       32 |     15850 |            0.20 |
 |   LUT as Distributed RAM |    <0.001 |       64 |     19000 |            0.34 |
-|   CARRY4                 |    <0.001 |       10 |     15850 |            0.06 |
-|   Register               |    <0.001 |     2161 |    126800 |            1.70 |
-|   Others                 |     0.000 |       13 |       --- |             --- |
-| Signals                  |     0.025 |     2872 |       --- |             --- |
+|   Register               |    <0.001 |     2247 |    126800 |            1.77 |
+|   Others                 |     0.000 |       19 |       --- |             --- |
+| Signals                  |     0.028 |     3009 |       --- |             --- |
 | Block RAM                |     0.002 |      0.5 |       135 |            0.37 |
 | I/O                      |    <0.001 |       39 |       210 |           18.57 |
 | Static Power             |     0.097 |          |           |                 |
-| Total                    |     0.136 |          |           |                 |
+| Total                    |     0.140 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +74,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.054 |       0.039 |      0.015 |
+| Vccint    |       1.000 |     0.057 |       0.042 |      0.015 |
 | Vccaux    |       1.800 |     0.018 |       0.000 |      0.018 |
 | Vcco33    |       3.300 |     0.004 |       0.000 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -143,12 +143,12 @@ Table of Contents
 +-------------------------------+-----------+
 | Name                          | Power (W) |
 +-------------------------------+-----------+
-| top                           |     0.039 |
-|   k0                          |     0.039 |
-|     central_processing_unit_0 |     0.011 |
-|       register_file_0         |     0.011 |
+| top                           |     0.042 |
+|   k0                          |     0.042 |
+|     central_processing_unit_0 |     0.013 |
+|       register_file_0         |     0.012 |
 |     data_memory_0             |     0.009 |
-|     instruction_memory_0      |     0.016 |
+|     instruction_memory_0      |     0.018 |
 |     rom_0                     |     0.002 |
 |       U0                      |     0.002 |
 +-------------------------------+-----------+

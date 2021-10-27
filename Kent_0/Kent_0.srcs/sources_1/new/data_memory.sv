@@ -21,10 +21,8 @@ module data_memory
     //==============================
     // parameter
     //==============================
-    parameter ADDR_TIMER_0_N_L = 8'hf6;
-    parameter ADDR_TIMER_0_N_H = 8'hf7;
-    parameter ADDR_TIMER_1_N_L = 8'hf8;
-    parameter ADDR_TIMER_1_N_H = 8'hf8;
+    parameter ADDR_TIMER_0 = 8'hf2;
+    parameter ADDR_TIMER_1 = 8'hf6;
     parameter ADDR_TE = 8'hfa;
     parameter ADDR_IE = 8'hfb;
     parameter ADDR_PORT_0 = 8'hfc;
@@ -44,14 +42,14 @@ module data_memory
     logic [7:0] port_3;
     logic [7:0] ie;
     logic [7:0] te;
-    logic [15:0] timer_0_N;
-    logic [15:0] timer_1_N;
+    logic [31:0] timer_0_N;
+    logic [31:0] timer_1_N;
     
     //==============================
     // assign
     //==============================
-    assign timer_0_N = {memory[ADDR_TIMER_0_N_H], memory[ADDR_TIMER_0_N_L]};
-    assign timer_1_N = {memory[ADDR_TIMER_1_N_H], memory[ADDR_TIMER_1_N_L]};
+    assign timer_0_N = {memory[ADDR_TIMER_0 + 3], memory[ADDR_TIMER_0 + 2], memory[ADDR_TIMER_0 + 1], memory[ADDR_TIMER_0]};
+    assign timer_1_N = {memory[ADDR_TIMER_1 + 3], memory[ADDR_TIMER_1 + 2], memory[ADDR_TIMER_1 + 1], memory[ADDR_TIMER_1]};
     assign te = memory[ADDR_TE];
     assign ie = memory[ADDR_IE];
     assign port_0 = memory[ADDR_PORT_0];

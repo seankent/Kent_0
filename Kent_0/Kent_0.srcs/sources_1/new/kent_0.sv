@@ -41,11 +41,11 @@ module kent_0
     // timer enable
     logic [7:0] te;
     // timer 0
-    logic [15:0] timer_0_N;
+    logic [31:0] timer_0_N;
     logic timer_0_rst;
     logic timer_0_ov;
     // timer 1
-    logic [15:0] timer_1_0;
+    logic [31:0] timer_1_N;
     logic timer_1_rst;
     logic timer_1_ov;
     // interupt logic

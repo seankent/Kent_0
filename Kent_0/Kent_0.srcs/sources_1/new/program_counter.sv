@@ -115,6 +115,8 @@ module program_counter
     always_comb begin
         exit_intr_0 = isr[4] & (ctrl_flow_type == CTRL_FLOW_TYPE__RETI);
         exit_intr_1 = isr[5] & (ctrl_flow_type == CTRL_FLOW_TYPE__RETI);
+        busy = |isr[7:4];
+        exit = |{exit_intr_1, exit_intr_0};
         enter_intr_0 = 1'b0;
         enter_intr_1 = 1'b0;
         case (1'b1)
@@ -122,8 +124,6 @@ module program_counter
             isr[1]: enter_intr_1 = ~busy | exit;
         endcase
         enter = |{enter_intr_1, enter_intr_0};
-        busy = |isr[7:4];
-        exit = |{exit_intr_1, exit_intr_0};
     end
  
     //==============================

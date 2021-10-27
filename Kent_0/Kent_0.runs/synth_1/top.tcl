@@ -17,8 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 5
-set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -46,6 +44,7 @@ read_verilog -library xil_defaultlib -sv {
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/program_counter.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/register_file.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/system.sv
+  C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/timer.sv
   C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/new/top.sv
 }
 read_ip -quiet C:/Users/seanj/Documents/Kent_0/Kent_0/Kent_0.srcs/sources_1/ip/rom/rom.xci

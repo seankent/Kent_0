@@ -15,7 +15,7 @@ class Assembler:
 		# registers
 		self.registers = set(['r0', 'r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7'])
 		# instruction set
-		self.instruction_set = set(['load', 'store', 'jump', 'beq', 'bne', 'blt', 'ble', 'add', 'sub', 'and', 'or', 'xor', 'shl', 'shr'])
+		self.instruction_set = set(['load', 'store', 'jump', 'beq', 'bne', 'blt', 'ble', 'add', 'sub', 'and', 'or', 'xor', 'shl', 'shr', 'reti', 'nop'])
 		# source code
 		self.src = open(file_in).read()
 		# tokens
@@ -34,15 +34,17 @@ class Assembler:
 		self.OP__LOAD = 0x1
 		self.OP__JUMP = 0x1
 		self.OP__STORE = 0x2
-		self.OP__BRANCH = 0x3
+		self.OP__BRANCH = 0x2
+		self.OP__RETI = 0x3
 		self.OP_EXT_0__LOAD_IMM = 0x0
 		self.OP_EXT_0__LOAD_MEM = 0x2
 		self.OP_EXT_0__JUMP_RELATIVE = 0x1
 		self.OP_EXT_0__JUMP_INDIRECT = 0x3
-		self.BRANCH__BEQ = 0x0
-		self.BRANCH__BNE = 0x1
-		self.BRANCH__BLT = 0x2
-		self.BRANCH__BLE = 0x3
+		self.OP_EXT_1__STORE = 0x0
+		self.OP_EXT_1__BEQ = 0x1
+		self.OP_EXT_1__BNE = 0x3
+		self.OP_EXT_1__BLT = 0x5
+		self.OP_EXT_1__BLE = 0x7
 		self.FUNC__ADD = 0x0
 		self.FUNC__SUB = 0x1
 		self.FUNC__AND = 0x2
@@ -53,7 +55,7 @@ class Assembler:
 
 		# list of functions
 		self.func = {'add': self.FUNC__ADD, 'sub': self.FUNC__SUB, 'and': self.FUNC__AND, 'or': self.FUNC__OR, 'xor': self.FUNC__XOR, 'shl': self.FUNC__SHL, 'shr': self.FUNC__SHR}
-		self.branch = {'beq': self.BRANCH__BEQ, 'bne': self.BRANCH__BNE, 'blt': self.BRANCH__BLT, 'ble': self.BRANCH__BLE}
+		self.branch = {'beq': self.OP_EXT_1__BEQ, 'bne': self.OP_EXT_1__BNE, 'blt': self.OP_EXT_1__BLT, 'ble': self.OP_EXT_1__BLE}
 
 
 	########
@@ -80,8 +82,8 @@ class Assembler:
 	#######
 	def run(self):
 		self.tokenize()
-		print(self.tokens)
 		self.parse_tokens()
+		print(self.instructions)
 		self.assemble()
 		
 	############
@@ -132,6 +134,15 @@ class Assembler:
 				else:
 					self.labels[label] = n
 
+			# line indicates an address
+			elif line[0][0] == '.' and self.token_to_imm(line[0][1:]) != None:
+				new_n = self.token_to_imm(line[0][1:])
+				if new_n < n:
+					print(f'[ERROR] The new address, new_n, is less than the current address, n')
+				while (n != new_n):
+					self.instructions.append(['nop'])
+					n += 1
+
 			# line is an instruction
 			elif line[0] in self.instruction_set:
 				instr = line
@@ -159,6 +170,10 @@ class Assembler:
 				binary = self.instr__load(instr)
 			elif op in self.branch:
 				binary = self.instr__branch(instr, n)
+			elif op == 'reti':
+				binary = self.instr__reti(instr)
+			elif op == 'nop':
+				binary = self.instr__func(['add', 'r0', 'r0', 'r0'])
 
 			self.instructions_binary.append(binary)
 
@@ -219,10 +234,10 @@ class Assembler:
 		if (addr_0 == None) or (addr_1 == None) or (imm == None):
 			print(f'[ERROR] Invalid arguments')
 
-		# get function encoding
-		branch = self.branch[op]
+		# get correct op code extention encoding
+		op_ext_1 = self.branch[op]
 		# build binary
-		binary = self.build__branch(addr_0, addr_1, imm, branch)
+		binary = self.build__branch(addr_0, addr_1, imm, op_ext_1)
 		return binary
 
 
@@ -314,6 +329,21 @@ class Assembler:
 		binary = self.build__store(addr_0, addr_1)
 		return binary
 
+	###############
+	# instr__reti #
+	###############
+	def instr__reti(self, instr):
+		# check instruction length
+		if len(instr) != 1:
+			print(f'[ERROR] Invalid op')
+
+		op = instr[0]
+		if op != 'reti':
+			print(f'[ERROR] Invalid op')
+		
+		binary = self.build__reti()
+		return binary
+
 	#################
 	# token_to_addr #
 	#################
@@ -362,7 +392,7 @@ class Assembler:
 	# build__store #
 	################
 	def build__store(self, addr_0, addr_1):
-		return (((addr_0 & 0x7) << 8) | ((addr_1 & 0x7) << 5) | (self.OP__STORE & 0x3)) & 0x07fe3
+		return (((addr_0 & 0x7) << 8) | ((addr_1 & 0x7) << 5) | ((self.OP_EXT_1__STORE & 0x3) << 2) | (self.OP__STORE & 0x3)) & 0x07fe3
 
 	###################
 	# build__load_imm #
@@ -379,9 +409,14 @@ class Assembler:
 	#################
 	# build__branch #
 	#################
-	def build__branch(self, addr_0, addr_1, imm, branch):
-		return (((imm & 0x1f) << 11) | ((addr_0 & 0x7) << 8) | ((addr_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((branch & 0x3) << 2) | (self.OP__BRANCH & 0x3)) & 0xffff
+	def build__branch(self, addr_0, addr_1, imm, op_ext_1):
+		return (((imm & 0x1f) << 11) | ((addr_0 & 0x7) << 8) | ((addr_1 & 0x7) << 5) | (((imm >> 5) & 0x1) << 4) | ((op_ext_1 & 0x3) << 2) | (self.OP__BRANCH & 0x3)) & 0xffff
 
+    #################
+	# build__branch #
+	#################
+	def build__reti(self):
+		return (self.OP__RETI & 0x3) & 0x0003
 
 assembler = Assembler('t_0.txt')
 assembler.run()

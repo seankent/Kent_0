@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="rom_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1635142396">
+<GenRun Id="rom_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1635319451">
   <File Type="PA-TCL" Name="rom.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="rom_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="rom_reports.tcl"/>
   <File Type="RDS-RDS" Name="rom.vds"/>
   <File Type="RDS-UTIL" Name="rom_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="rom_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="rom.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="rom_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="rom_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/rom">
     <File Path="$PSRCDIR/sources_1/ip/rom/rom.xci">
       <FileInfo>
